@@ -332,6 +332,7 @@
 				CODE_SIGN_ENTITLEMENTS = WindowGate/WindowGate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = NARTSSS6TY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = WindowGate/Info.plist;
@@ -339,6 +340,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.iseteki.WindowGate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WindowGate/Bridge/WindowGate-Bridging-Header.h";
@@ -356,6 +358,7 @@
 				CODE_SIGN_ENTITLEMENTS = WindowGate/WindowGate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = NARTSSS6TY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = WindowGate/Info.plist;
@@ -363,6 +366,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.iseteki.WindowGate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "WindowGate/Bridge/WindowGate-Bridging-Header.h";
