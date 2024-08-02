@@ -10,7 +10,7 @@ import SwiftUI
 struct WindowItemView: View {
     static let defaultIcon = NSImage(systemSymbolName: "star", accessibilityDescription: nil)!
     
-    let item: WindowsViewDataSource.WindowItem
+    @ObservedObject var item: WindowsViewDataSource.WindowItem
     @State private var isHovered = false
     
     init(item: WindowsViewDataSource.WindowItem) {
@@ -28,7 +28,7 @@ struct WindowItemView: View {
                         .background(Color.gray)
                         .cornerRadius(LayoutConstants.cornerRadius)
                     // Icon
-                    Image(nsImage: item.icon ?? WindowItemView.defaultIcon)
+                    Image(nsImage: item.icon ?? Self.defaultIcon)
                         .resizable()
                         .frame(width: LayoutConstants.iconSize, height: LayoutConstants.iconSize)
                         .padding(LayoutConstants.iconPosition)
