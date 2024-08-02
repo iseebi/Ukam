@@ -23,7 +23,7 @@ class MenuManager: NSObject {
         statusBarItem = statusBar.statusItem(withLength: NSStatusItem.squareLength)
         
         popover = NSPopover()
-        popover.contentViewController = NSViewController()
+        popover.contentViewController = WindowsViewController(windowManager: windowManager)
         popover.behavior = .transient
         
         super.init()
@@ -52,6 +52,7 @@ class MenuManager: NSObject {
             statusBarItem.menu = nil // メニューを再度nilに戻す
         } else {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            popover.contentViewController?.view.window?.makeKey()
         }
     }
     

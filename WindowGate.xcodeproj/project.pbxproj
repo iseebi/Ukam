@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,8 @@
 		822CDF4427D4C79300C6B331 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CDF4327D4C79300C6B331 /* WindowManager.swift */; };
 		822CDF4D27D5181D00C6B331 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822CDF4C27D5181D00C6B331 /* CoreGraphics.framework */; platformFilter = maccatalyst; };
 		822CDF5027D52C1C00C6B331 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822CDF4F27D52C1C00C6B331 /* ApplicationServices.framework */; platformFilter = maccatalyst; };
+		82B14E002C5CDBF7000B08C3 /* WindowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B14DFF2C5CDBF7000B08C3 /* WindowsViewController.swift */; };
+		82B14E022C5CDC0E000B08C3 /* WindowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B14E012C5CDC0E000B08C3 /* WindowsView.swift */; };
 		82C57EFD27D46DB900395627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C57EFC27D46DB900395627 /* AppDelegate.swift */; };
 		82C57EFF27D46DB900395627 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C57EFE27D46DB900395627 /* ViewController.swift */; };
 		82C57F0127D46DC100395627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82C57F0027D46DC100395627 /* Assets.xcassets */; };
@@ -26,6 +28,8 @@
 		822CDF4C27D5181D00C6B331 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		822CDF4E27D52C0B00C6B331 /* AXUIElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXUIElement.h; sourceTree = "<group>"; };
 		822CDF4F27D52C1C00C6B331 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		82B14DFF2C5CDBF7000B08C3 /* WindowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsViewController.swift; sourceTree = "<group>"; };
+		82B14E012C5CDC0E000B08C3 /* WindowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsView.swift; sourceTree = "<group>"; };
 		82C57EF927D46DB900395627 /* WindowGate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WindowGate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82C57EFC27D46DB900395627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82C57EFE27D46DB900395627 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +87,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		82B14DFD2C5CDBDF000B08C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				82B14DFE2C5CDBE7000B08C3 /* Windows */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		82B14DFE2C5CDBE7000B08C3 /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				82B14DFF2C5CDBF7000B08C3 /* WindowsViewController.swift */,
+				82B14E012C5CDC0E000B08C3 /* WindowsView.swift */,
+			);
+			path = Windows;
+			sourceTree = "<group>";
+		};
 		82C57EF027D46DB900395627 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +124,7 @@
 		82C57EFB27D46DB900395627 /* WindowGate */ = {
 			isa = PBXGroup;
 			children = (
+				82B14DFD2C5CDBDF000B08C3 /* Views */,
 				822CDF4527D517A100C6B331 /* Bridge */,
 				822CDF4227D4C77F00C6B331 /* Managers */,
 				822CDF3F27D4C71F00C6B331 /* Model */,
@@ -187,9 +209,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				822CDF3E27D4C6CD00C6B331 /* MenuManager.swift in Sources */,
+				82B14E022C5CDC0E000B08C3 /* WindowsView.swift in Sources */,
 				822CDF4127D4C72E00C6B331 /* Window.swift in Sources */,
 				82C57EFF27D46DB900395627 /* ViewController.swift in Sources */,
 				82C57EFD27D46DB900395627 /* AppDelegate.swift in Sources */,
+				82B14E002C5CDBF7000B08C3 /* WindowsViewController.swift in Sources */,
 				822CDF4427D4C79300C6B331 /* WindowManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
