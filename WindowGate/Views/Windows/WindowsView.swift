@@ -28,7 +28,7 @@ struct WindowsView: View {
         ]
         
         return ScrollView {
-            LazyVGrid(columns: columns, spacing: LayoutConstants.padding) {
+            LazyVGrid(columns: columns) {
                 ForEach(dataSource.items, id: \.self) { item in
                     WindowItemView(item: item).onTapGesture {
                         delegate?.didSelectWindow(item.window)
