@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct WindowItemView: View {
-    let item: AnyWindowLike
+    static let defaultIcon = NSImage(systemSymbolName: "star", accessibilityDescription: nil)!
+    
+    let item: WindowsViewDataSource.WindowItem
     @State private var isHovered = false
     
-    init(item: AnyWindowLike) {
+    init(item: WindowsViewDataSource.WindowItem) {
         self.item = item
     }
     
@@ -26,17 +28,16 @@ struct WindowItemView: View {
                         .background(Color.gray)
                         .cornerRadius(LayoutConstants.cornerRadius)
                     // Icon
-                    Image(systemName: "star.fill")
+                    Image(nsImage: item.icon ?? WindowItemView.defaultIcon)
                         .resizable()
                         .frame(width: LayoutConstants.iconSize, height: LayoutConstants.iconSize)
-                        .opacity(item.alpha)
                         .padding(LayoutConstants.iconPosition)
                 }
-                Text(item.name ?? "(Unknown)")
+                Text(item.name)
                     .foregroundColor(.white)
                     .lineLimit(1)
             }
-            .help("\(item.name ?? "") - \(item.ownerName ?? "")")
+            .help("\(item.name) - \(item.ownerName)")
             .onHover(perform: { hovering in
                 isHovered = hovering
             })
@@ -48,5 +49,5 @@ struct WindowItemView: View {
 }
 
 #Preview {
-    WindowItemView(item: AnyWindowLike(base: WindowMock(id: 1, name: "Window 1"))).padding(20)
+    WindowItemView(item: WindowsViewDataSource.WindowItem(window: WindowMock(id: 1, name: "Window 1"))).padding(20)
 }

@@ -31,7 +31,7 @@ struct WindowsView: View {
             LazyVGrid(columns: columns, spacing: LayoutConstants.padding) {
                 ForEach(dataSource.items, id: \.self) { item in
                     WindowItemView(item: item).onTapGesture {
-                        delegate?.didSelectWindow(item)
+                        delegate?.didSelectWindow(item.window)
                     }
                 }
             }
@@ -90,13 +90,5 @@ struct WindowMock: WindowLike {
     init(id: Int, name: String) {
         self.id = id
         self.name = name
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-    
-    static func == (lhs: WindowMock, rhs: WindowMock) -> Bool {
-        return lhs.number == rhs.number
     }
 }

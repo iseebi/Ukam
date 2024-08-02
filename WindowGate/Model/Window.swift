@@ -19,50 +19,6 @@ protocol WindowLike {
     var bounds: NSRect { get }
 }
 
-struct AnyWindowLike: WindowLike, Identifiable, Hashable {
-    let base: WindowLike
-    
-    var id: Int {
-        return base.number ?? 0
-    }
-    
-    var isVisible: Bool {
-        return base.isVisible
-    }
-    var name: String? {
-        return base.name
-    }
-    var number: Int? {
-        return base.number
-    }
-    var ownerName: String? {
-        return base.ownerName
-    }
-    var ownerPID: Int? {
-        return base.ownerPID
-    }
-    var isOnScreen: Bool {
-        return base.isOnScreen
-    }
-    var alpha: CGFloat {
-        return base.alpha
-    }
-    var windowLayer: Int {
-        return base.windowLayer
-    }
-    var bounds: NSRect {
-        return base.bounds
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(base.number)
-    }
-    
-    static func == (lhs: AnyWindowLike, rhs: AnyWindowLike) -> Bool {
-        return lhs.number == rhs.number
-    }
-}
-
 struct Window: WindowLike, CustomStringConvertible {
     let rawData: [String: AnyObject]
     
