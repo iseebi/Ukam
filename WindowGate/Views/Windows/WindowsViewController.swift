@@ -73,6 +73,7 @@ extension WindowsViewController: WindowsViewDataSourceDelegate {
 extension WindowsViewController: WindowsViewDelegate {
     func didSelectWindow(_ window: WindowLike) {
         guard let rawWindow = windows.first(where: { $0.number == window.number }) else { return }
+        windowManager.moveWindowIfNeeded(rawWindow)
         windowManager.activate(rawWindow)
         delegate?.windowsViewController(self, didSelectWindow: rawWindow);
     }
