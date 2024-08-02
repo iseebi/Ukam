@@ -78,6 +78,6 @@ class WindowManager {
         guard let pid = window.ownerPID,
               let runningApp = NSRunningApplication(processIdentifier: pid_t(pid))
         else { return }
-        runningApp.activate(options: [.activateIgnoringOtherApps, .activateAllWindows])
+        runningApp.activate(options: [.activateAllWindows])
     }
 }

@@ -13,6 +13,8 @@ protocol WindowsViewDelegate {
 
 struct WindowsView: View {
     @StateObject fileprivate var dataSource: WindowsViewDataSource
+    @State private var position: Int?
+    
     var delegate: WindowsViewDelegate?
     
     init(dataSource: WindowsViewDataSource = WindowsViewDataSource()) {
@@ -36,6 +38,11 @@ struct WindowsView: View {
             .frame(minWidth: LayoutConstants.windowsFrameWidth)
             .padding(LayoutConstants.padding)
         }
+        .scrollPosition(id: $position)
+    }
+    
+    func moveToTop() {
+        position = 0
     }
 }
 

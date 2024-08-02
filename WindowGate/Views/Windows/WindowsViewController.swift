@@ -20,6 +20,8 @@ class WindowsViewController: NSViewController {
     private var dataSoruce = WindowsViewDataSource()
     private var containeredView: WindowsView!
     
+    private var windows: [Window] = []
+    
     init(windowManager: WindowManager) {
         self.windowManager = windowManager
         super.init(nibName: nil, bundle: nil)
@@ -48,18 +50,20 @@ class WindowsViewController: NSViewController {
     
     override func viewWillAppear() {
         super.viewWillAppear()
-        dataSoruce.refresh(windowManager.enumerateVisibles())
+        windows = windowManager.enumerateVisibles()
+        dataSoruce.refresh(windows)
+        containeredView.moveToTop()
     }
     
     override func viewDidDisappear() {
         super.viewDidDisappear()
-        print("viewDidDisappear")
     }
 }
 
 extension WindowsViewController: WindowsViewDelegate {
     func didSelectWindow(_ window: WindowLike) {
-        print("Selected window: \(window)")
-        delegate?.windowsViewController(self, didSelectWindow: window);
+        guard let rawWindow = windows.first(where: { $0.number == window.number }) else { return }
+        windowManager.activate(rawWindow)
+        delegate?.windowsViewController(self, didSelectWindow: rawWindow);
     }
 }
