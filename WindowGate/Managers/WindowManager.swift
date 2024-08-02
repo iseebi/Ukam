@@ -41,7 +41,9 @@ class WindowManager {
     }
     
     func activate(_ window: Window){
+        activateWindowApp(window)
         windowAXUIElementContext(window) { element in
+            AXUIElementSetAttributeValue(element, kAXFocusedAttribute as CFString, kCFBooleanTrue)
             AXUIElementPerformAction(element, kAXRaiseAction as CFString)
         }
     }
@@ -66,5 +68,12 @@ class WindowManager {
                     element, kAXSizeAttribute as CFString, sizeValue)
             }
         }
+    }
+    
+    private func activateWindowApp(_ window: Window) {
+        guard let pid = window.ownerPID,
+              let runningApp = NSRunningApplication(processIdentifier: pid_t(pid))
+        else { return }
+        runningApp.activate(options: [.activateIgnoringOtherApps, .activateAllWindows])
     }
 }
