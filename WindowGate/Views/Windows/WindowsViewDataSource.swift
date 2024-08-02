@@ -13,16 +13,23 @@ protocol WindowsViewDataSourceDelegate {
 
 class WindowsViewDataSource: ObservableObject {
     class WindowItem: ObservableObject, Identifiable, Equatable, Hashable {
-        let window: WindowLike
+        fileprivate(set) var window: WindowLike {
+            didSet {
+                name = window.name ?? ""
+                ownerName = window.ownerName ?? ""
+            }
+        }
         
         var id = UUID()
-        var name: String { window.name ?? "" }
-        var ownerName: String { window.ownerName ?? "" }
+        @Published var name: String
+        @Published var ownerName: String
         @Published var icon: NSImage? = nil
         @Published var screenshot: NSImage? = nil
         
         init(window: WindowLike) {
             self.window = window
+            name = window.name ?? ""
+            ownerName = window.ownerName ?? ""
         }
         
         static func == (lhs: WindowItem, rhs: WindowItem) -> Bool {
@@ -44,8 +51,10 @@ class WindowsViewDataSource: ObservableObject {
     }
     
     func refresh(_ newItems: [any WindowLike]) {
-        items = newItems.map {[weak self] in
-            let item = WindowItem(window: $0)
+        let lastItems = items
+        items = newItems.map {[weak self] newItem in
+            let item = lastItems.first(where: { $0.window.number == newItem.number }) ?? WindowItem(window: newItem)
+            item.window = newItem
             
             self?.attachImages(for: item)
             

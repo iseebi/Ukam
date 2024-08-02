@@ -43,7 +43,6 @@ struct WindowItemView: View {
                     .foregroundColor(.white)
                     .lineLimit(1)
             }
-            .help("\(item.name) - \(item.ownerName)")
             .onHover(perform: { hovering in
                 isHovered = hovering
             })
@@ -51,6 +50,7 @@ struct WindowItemView: View {
             .background(isHovered ? Color.accentColor : Color.clear)
         }
         .cornerRadius(LayoutConstants.cornerRadius)
+        .help("\(item.name) - \(item.ownerName)")
     }
 }
 
