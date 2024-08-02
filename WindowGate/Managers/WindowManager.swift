@@ -55,7 +55,6 @@ class WindowManager {
     
     func moveWindowIfNeeded(_ window: Window) {
         guard let screen = NSScreen.main else { return }
-        print(window.bounds)
         guard !NSIntersectsRect(window.bounds, screen.visibleFrame) else { return }
         var newRect = NSRect(origin: screen.visibleFrame.origin, size: window.bounds.size)
         if ( screen.visibleFrame.width < window.bounds.width) {
