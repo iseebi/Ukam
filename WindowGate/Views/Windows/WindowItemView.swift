@@ -25,11 +25,12 @@ struct WindowItemView: View {
                     if let screenshot = item.screenshot {
                         Image(nsImage: screenshot)
                             .resizable()
+                            .background(Color.gray.opacity(0.2))
                             .frame(height: LayoutConstants.screenshotHeight)
-                            .background(Color.gray)
                             .cornerRadius(LayoutConstants.cornerRadius)
                     } else {
                         Color.gray
+                            .opacity(0.2)
                             .frame(height: LayoutConstants.screenshotHeight)
                             .cornerRadius(LayoutConstants.cornerRadius)
                     }
