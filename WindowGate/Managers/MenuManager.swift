@@ -12,6 +12,7 @@ class MenuManager: NSObject {
     
     let statusBarMenu: NSMenu
     let statusBarItem: NSStatusItem
+    let popover: NSPopover
     
     var windows: [Window] = []
 
@@ -21,10 +22,18 @@ class MenuManager: NSObject {
         let statusBar = NSStatusBar.system
         statusBarItem = statusBar.statusItem(withLength: NSStatusItem.squareLength)
         
+        popover = NSPopover()
+        popover.contentViewController = NSViewController()
+        popover.behavior = .transient
+        
         super.init()
         
-        statusBarItem.button?.title = "😐"
-        statusBarItem.menu = statusBarMenu
+        if let button = statusBarItem.button {
+            button.image = NSImage(systemSymbolName: "star", accessibilityDescription: "WindowGate")
+            button.target = self
+            button.action = #selector(statusBarItemClicked(_:))
+            button.sendAction(on: [.leftMouseUp, .rightMouseUp])
+        }
         
         statusBarMenu.delegate = self
         statusBarMenu.autoenablesItems = true
@@ -32,6 +41,18 @@ class MenuManager: NSObject {
 
     @objc func exitApp() {
         NSApplication.shared.terminate(self)
+    }
+    
+    @objc func statusBarItemClicked(_ sender: NSStatusItem) {
+        guard let event = NSApp.currentEvent,
+              let button = statusBarItem.button else { return }
+        if event.type == NSEvent.EventType.rightMouseUp {
+            statusBarItem.menu = statusBarMenu
+            button.performClick(nil) // メニューを表示するためのハック
+            statusBarItem.menu = nil // メニューを再度nilに戻す
+        } else {
+            popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+        }
     }
     
     @objc func selectedItem(_ menuItem: NSMenuItem) {
