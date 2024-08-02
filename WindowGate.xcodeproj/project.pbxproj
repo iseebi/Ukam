@@ -16,6 +16,7 @@
 		82B14E022C5CDC0E000B08C3 /* WindowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B14E012C5CDC0E000B08C3 /* WindowsView.swift */; };
 		82B14E042C5CE172000B08C3 /* WindowsViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B14E032C5CE172000B08C3 /* WindowsViewDataSource.swift */; };
 		82B14E062C5CED30000B08C3 /* WindowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B14E052C5CED30000B08C3 /* WindowItemView.swift */; };
+		82B14E082C5CF685000B08C3 /* LayoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B14E072C5CF685000B08C3 /* LayoutConstants.swift */; };
 		82C57EFD27D46DB900395627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C57EFC27D46DB900395627 /* AppDelegate.swift */; };
 		82C57EFF27D46DB900395627 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C57EFE27D46DB900395627 /* ViewController.swift */; };
 		82C57F0127D46DC100395627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82C57F0027D46DC100395627 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		82B14E012C5CDC0E000B08C3 /* WindowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsView.swift; sourceTree = "<group>"; };
 		82B14E032C5CE172000B08C3 /* WindowsViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsViewDataSource.swift; sourceTree = "<group>"; };
 		82B14E052C5CED30000B08C3 /* WindowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowItemView.swift; sourceTree = "<group>"; };
+		82B14E072C5CF685000B08C3 /* LayoutConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutConstants.swift; sourceTree = "<group>"; };
 		82C57EF927D46DB900395627 /* WindowGate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WindowGate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82C57EFC27D46DB900395627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82C57EFE27D46DB900395627 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				82B14DFE2C5CDBE7000B08C3 /* Windows */,
+				82B14E072C5CF685000B08C3 /* LayoutConstants.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				82C57EFD27D46DB900395627 /* AppDelegate.swift in Sources */,
 				82B14E002C5CDBF7000B08C3 /* WindowsViewController.swift in Sources */,
 				822CDF4427D4C79300C6B331 /* WindowManager.swift in Sources */,
+				82B14E082C5CF685000B08C3 /* LayoutConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

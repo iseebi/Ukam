@@ -22,15 +22,15 @@ struct WindowItemView: View {
                     // Screenshot
                     Image(systemName: "star")
                         .resizable()
-                        .frame(minHeight: 100)
+                        .frame(minHeight: LayoutConstants.screenshotHeight)
                         .background(Color.gray)
-                        .cornerRadius(8)
+                        .cornerRadius(LayoutConstants.cornerRadius)
                     // Icon
                     Image(systemName: "star.fill")
                         .resizable()
-                        .frame(width: 24, height: 24)
+                        .frame(width: LayoutConstants.iconSize, height: LayoutConstants.iconSize)
                         .opacity(item.alpha)
-                        .padding(4)
+                        .padding(LayoutConstants.iconPosition)
                 }
                 Text(item.name ?? "(Unknown)")
                     .foregroundColor(.white)
@@ -40,10 +40,10 @@ struct WindowItemView: View {
             .onHover(perform: { hovering in
                 isHovered = hovering
             })
-            .padding(10)
+            .padding(LayoutConstants.padding)
             .background(isHovered ? Color.accentColor : Color.clear)
         }
-        .cornerRadius(8)
+        .cornerRadius(LayoutConstants.cornerRadius)
     }
 }
 

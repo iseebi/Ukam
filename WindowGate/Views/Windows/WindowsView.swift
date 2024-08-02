@@ -26,15 +26,15 @@ struct WindowsView: View {
         ]
         
         return ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
+            LazyVGrid(columns: columns, spacing: LayoutConstants.padding) {
                 ForEach(dataSource.items, id: \.self) { item in
                     WindowItemView(item: item).onTapGesture {
                         delegate?.didSelectWindow(item)
                     }
                 }
             }
-            .frame(minWidth: 300)
-            .padding(10)
+            .frame(minWidth: LayoutConstants.windowsFrameWidth)
+            .padding(LayoutConstants.padding)
         }
     }
 }
