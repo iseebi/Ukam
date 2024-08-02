@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import ScreenCaptureKit
 
 func appAXUIElementContext(_ window: Window, handler: (AXUIElement) -> Void) {
     guard let pid = window.ownerPID else { return }
@@ -74,10 +75,78 @@ class WindowManager {
         }
     }
     
+    func captureImage(_ window: Window, requestedSize: CGSize, contentHandler: @escaping (NSImage?) -> Void) {
+        let completion = { (image: NSImage?) in
+            DispatchQueue.main.async {
+                contentHandler(image)
+            }
+        }
+        
+        DispatchQueue.global().async {
+            SCShareableContent.getWithCompletionHandler { shareableContent, error in
+                if let error = error {
+                    print(error)
+                    completion(nil)
+                    return
+                }
+                
+                guard let shareableContent = shareableContent,
+                      let windowID = window.number,
+                      let captureWindow = shareableContent.windows.first(where: { $0.windowID == windowID }),
+                      let display = shareableContent.displays.first(where: { $0.frame.contains(captureWindow.frame) })
+                else {
+                    completion(nil)
+                    return
+                }
+                
+                let filter = SCContentFilter(display: display, including: [captureWindow])
+                let config = SCStreamConfiguration()
+                config.sourceRect = CGRect(
+                    origin: CGPoint(
+                        x: captureWindow.frame.origin.x - display.frame.origin.x,
+                        y: captureWindow.frame.origin.y - display.frame.origin.y
+                    ),
+                    size: captureWindow.frame.size
+                )
+                SCScreenshotManager.captureImage(contentFilter: filter, configuration: config) { image, error in
+                    if let error = error {
+                        print(error)
+                        completion(nil)
+                        return
+                    }
+                    
+                    guard let image = image else {
+                        completion(nil)
+                        return
+                    }
+                    
+                    completion(NSImage(cgImage: image, size: NSSize(width: image.width, height: image.height)))
+                }
+            }
+        }
+    }
+    
     private func activateWindowApp(_ window: Window) {
         guard let pid = window.ownerPID,
               let runningApp = NSRunningApplication(processIdentifier: pid_t(pid))
         else { return }
         runningApp.activate(options: [.activateAllWindows])
     }
+}
+
+private func aspectFitSize(originalSize: CGSize, drawableSize: CGSize) -> CGSize {
+    let originalAspectRatio = originalSize.width / originalSize.height
+    let drawableAspectRatio = drawableSize.width / drawableSize.height
+    
+    var scaledSize: CGSize
+    
+    if originalAspectRatio > drawableAspectRatio {
+        // Width is the limiting factor
+        scaledSize = CGSize(width: drawableSize.width, height: drawableSize.width / originalAspectRatio)
+    } else {
+        // Height is the limiting factor
+        scaledSize = CGSize(width: drawableSize.height * originalAspectRatio, height: drawableSize.height)
+    }
+    
+    return scaledSize
 }

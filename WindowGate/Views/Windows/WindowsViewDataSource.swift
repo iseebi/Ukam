@@ -7,14 +7,19 @@
 
 import Cocoa
 
+protocol WindowsViewDataSourceDelegate {
+    func windowsViewDataSource(_ dataSource: WindowsViewDataSource, didRequestedScreenCaptureFor window: WindowLike, resultHandler: @escaping (NSImage?) -> Void)
+}
+
 class WindowsViewDataSource: ObservableObject {
     class WindowItem: ObservableObject, Identifiable, Equatable, Hashable {
         let window: WindowLike
         
-        var id: Int { window.number ?? 0 }
+        var id = UUID()
         var name: String { window.name ?? "" }
         var ownerName: String { window.ownerName ?? "" }
         @Published var icon: NSImage? = nil
+        @Published var screenshot: NSImage? = nil
         
         init(window: WindowLike) {
             self.window = window
@@ -32,6 +37,8 @@ class WindowsViewDataSource: ObservableObject {
     @Published private(set) var items: [WindowItem]
     private var iconsForPID: [Int: NSImage] = [:]
     
+    var delegate: WindowsViewDataSourceDelegate?
+    
     init() {
         items = []
     }
@@ -40,14 +47,22 @@ class WindowsViewDataSource: ObservableObject {
         items = newItems.map {[weak self] in
             let item = WindowItem(window: $0)
             
-            if let pid = $0.ownerPID {
-                self?.icon(for: pid, resultHandler: { icon in
-                    item.icon = icon
-                })
-            }
+            self?.attachImages(for: item)
             
             return item
         }
+    }
+    
+    private func attachImages(for window: WindowItem) {
+        guard let pid = window.window.ownerPID else { return }
+        
+        icon(for: pid) { image in
+            window.icon = image
+        }
+        
+        delegate?.windowsViewDataSource(self, didRequestedScreenCaptureFor: window.window, resultHandler: { image in
+            window.screenshot = image
+        })
     }
     
     func icon(for pid: Int, resultHandler: @escaping (NSImage?) -> Void) {

@@ -34,7 +34,8 @@ class WindowsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        containeredView = WindowsView(dataSource: self.dataSoruce)
+        containeredView = WindowsView(dataSource: dataSoruce)
+        dataSoruce.delegate = self
         containeredView.delegate = self
         
         let hostingView = NSHostingView(rootView: containeredView)
@@ -57,6 +58,15 @@ class WindowsViewController: NSViewController {
     
     override func viewDidDisappear() {
         super.viewDidDisappear()
+    }
+}
+
+extension WindowsViewController: WindowsViewDataSourceDelegate {
+    func windowsViewDataSource(_ dataSource: WindowsViewDataSource, didRequestedScreenCaptureFor window: WindowLike, resultHandler: @escaping (NSImage?) -> Void) {
+        guard let rawWindow = windows.first(where: { $0.number == window.number }) else { return }
+        windowManager.captureImage(rawWindow, requestedSize: CGSize(width: LayoutConstants.screenshotWidth, height: LayoutConstants.screenshotHeight)) { image in
+            resultHandler(image)
+        }
     }
 }
 

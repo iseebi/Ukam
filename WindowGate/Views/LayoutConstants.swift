@@ -12,6 +12,7 @@ struct LayoutConstants {
     static let cornerRadius: CGFloat = 8
     
     static let windowsFrameWidth: CGFloat = 300
+    static let screenshotWidth: CGFloat = 240
     static let screenshotHeight: CGFloat = 100
     static let iconSize: CGFloat = 24
     static let iconPosition: CGFloat = 4

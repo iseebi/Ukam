@@ -22,11 +22,17 @@ struct WindowItemView: View {
             VStack {
                 ZStack(alignment: .bottomTrailing) {
                     // Screenshot
-                    Image(systemName: "star")
-                        .resizable()
-                        .frame(minHeight: LayoutConstants.screenshotHeight)
-                        .background(Color.gray)
-                        .cornerRadius(LayoutConstants.cornerRadius)
+                    if let screenshot = item.screenshot {
+                        Image(nsImage: screenshot)
+                            .resizable()
+                            .frame(height: LayoutConstants.screenshotHeight)
+                            .background(Color.gray)
+                            .cornerRadius(LayoutConstants.cornerRadius)
+                    } else {
+                        Color.gray
+                            .frame(height: LayoutConstants.screenshotHeight)
+                            .cornerRadius(LayoutConstants.cornerRadius)
+                    }
                     // Icon
                     Image(nsImage: item.icon ?? Self.defaultIcon)
                         .resizable()
