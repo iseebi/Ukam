@@ -40,8 +40,11 @@ class MenuManager: NSObject {
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         
-        statusBarMenu.delegate = self
         statusBarMenu.autoenablesItems = true
+        statusBarMenu.addItem(
+            withTitle: "Exit",
+            action: #selector(MenuManager.exitApp),
+            keyEquivalent: "").target = self
     }
 
     @objc func exitApp() {
@@ -59,33 +62,6 @@ class MenuManager: NSObject {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
             popover.contentViewController?.view.window?.makeKey()
         }
-    }
-    
-    @objc func selectedItem(_ menuItem: NSMenuItem) {
-        guard let window = windows.first(where: { $0.number == menuItem.tag })
-        else { return }
-        windowManager.moveWindowIfNeeded(window)
-        windowManager.activate(window)
-    }
-}
-
-extension MenuManager: NSMenuDelegate {
-    func menuWillOpen(_ menu: NSMenu) {
-        menu.removeAllItems()
-        windows = windowManager.enumerateVisibles()
-        for window in windows {
-            let item = statusBarMenu.addItem(
-                withTitle: "\(window.name ?? "") (\(window.ownerName ?? ""))",
-                action: #selector(MenuManager.selectedItem(_:)),
-                keyEquivalent: "")
-            item.target = self
-            item.tag = window.number ?? -1
-        }
-        statusBarMenu.addItem(NSMenuItem.separator())
-        statusBarMenu.addItem(
-            withTitle: "Exit",
-            action: #selector(MenuManager.exitApp),
-            keyEquivalent: "").target = self
     }
 }
 
