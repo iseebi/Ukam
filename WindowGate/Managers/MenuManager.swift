@@ -47,7 +47,7 @@ extension MenuManager: NSMenuDelegate {
         menu.removeAllItems()
         windows = windowManager.enumerate()
         for window in windows {
-            if window.isOnScreen && window.windowLayer == 0 {
+            if window.isVisible {
                 let item = statusBarMenu.addItem(
                     withTitle: "\(window.name ?? "") (\(window.ownerName ?? ""))",
                     action: #selector(MenuManager.selectedItem(_:)),

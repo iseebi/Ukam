@@ -10,6 +10,10 @@ import Foundation
 struct Window: CustomStringConvertible {
     let rawData: [String: AnyObject]
     
+    var isVisible: Bool {
+        return isOnScreen && windowLayer == 0 && alpha > 0
+    }
+    
     var name: String? {
         get {
             return rawData[kCGWindowName as String] as? String
@@ -33,6 +37,11 @@ struct Window: CustomStringConvertible {
     var isOnScreen: Bool {
         get {
             return rawData[kCGWindowIsOnscreen as String] as? Bool ?? false
+        }
+    }
+    var alpha: CGFloat {
+        get {
+            return CGFloat((rawData[kCGWindowAlpha as String] as? NSNumber)?.floatValue ?? 0)
         }
     }
     var windowLayer: Int {
