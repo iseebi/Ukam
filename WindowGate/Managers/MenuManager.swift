@@ -8,6 +8,7 @@
 import Cocoa
 
 class MenuManager: NSObject {
+    let windowsViewController: WindowsViewController
     let windowManager: WindowManager
     
     let statusBarMenu: NSMenu
@@ -22,11 +23,15 @@ class MenuManager: NSObject {
         let statusBar = NSStatusBar.system
         statusBarItem = statusBar.statusItem(withLength: NSStatusItem.squareLength)
         
+        windowsViewController = WindowsViewController(windowManager: windowManager)
+        
         popover = NSPopover()
-        popover.contentViewController = WindowsViewController(windowManager: windowManager)
+        popover.contentViewController = windowsViewController
         popover.behavior = .transient
         
         super.init()
+        
+        windowsViewController.delegate = self
         
         if let button = statusBarItem.button {
             button.image = NSImage(systemSymbolName: "star", accessibilityDescription: "WindowGate")
@@ -67,21 +72,25 @@ class MenuManager: NSObject {
 extension MenuManager: NSMenuDelegate {
     func menuWillOpen(_ menu: NSMenu) {
         menu.removeAllItems()
-        windows = windowManager.enumerate()
+        windows = windowManager.enumerateVisibles()
         for window in windows {
-            if window.isVisible {
-                let item = statusBarMenu.addItem(
-                    withTitle: "\(window.name ?? "") (\(window.ownerName ?? ""))",
-                    action: #selector(MenuManager.selectedItem(_:)),
-                    keyEquivalent: "")
-                item.target = self
-                item.tag = window.number ?? -1
-            }
+            let item = statusBarMenu.addItem(
+                withTitle: "\(window.name ?? "") (\(window.ownerName ?? ""))",
+                action: #selector(MenuManager.selectedItem(_:)),
+                keyEquivalent: "")
+            item.target = self
+            item.tag = window.number ?? -1
         }
         statusBarMenu.addItem(NSMenuItem.separator())
         statusBarMenu.addItem(
             withTitle: "Exit",
             action: #selector(MenuManager.exitApp),
             keyEquivalent: "").target = self
+    }
+}
+
+extension MenuManager: WindowsViewControllerDelegate {
+    func windowsViewController(_ viewController: WindowsViewController, didSelectWindow window: WindowLike) {
+        popover.close()
     }
 }

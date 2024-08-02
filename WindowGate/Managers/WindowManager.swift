@@ -30,6 +30,10 @@ func windowAXUIElementContext(_ window: Window, handler: (AXUIElement) -> Void) 
 }
 
 class WindowManager {
+    func enumerateVisibles() -> [Window] {
+        return enumerate().filter { $0.isVisible }
+    }
+    
     func enumerate() -> [Window] {
         //find all the windows (CGWindows)
         let options = CGWindowListOption(arrayLiteral: CGWindowListOption.optionOnScreenOnly)
