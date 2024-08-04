@@ -63,6 +63,11 @@ class WindowManager {
         if ( screen.visibleFrame.height < window.bounds.height) {
             newRect.size.height = screen.visibleFrame.height
         }
+        
+        // 上下左右中央にする
+        newRect.origin.x += (screen.visibleFrame.width - newRect.width) / 2
+        newRect.origin.y += (screen.visibleFrame.height - newRect.height) / 2
+        
         windowAXUIElementContext(window) { element in
             if let originValue = AXValueCreate(AXValueType.cgPoint, &newRect.origin),
                let sizeValue = AXValueCreate(AXValueType.cgSize, &newRect.size) {
