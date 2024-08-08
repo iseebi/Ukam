@@ -8,6 +8,14 @@
 import Cocoa
 import ScreenCaptureKit
 
+func lookupWindowID(_ uiElement: AXUIElement) -> CGWindowID? {
+    var windowId: CGWindowID = 0
+    if _AXUIElementGetWindow(uiElement, &windowId) != .success {
+        return nil
+    }
+    return windowId
+}
+
 func appAXUIElementContext(_ window: Window, handler: (AXUIElement) -> Void) {
     guard let pid = window.ownerPID else { return }
     let appElement = AXUIElementCreateApplication(pid_t(pid))
@@ -20,12 +28,13 @@ func windowAXUIElementContext(_ window: Window, handler: (AXUIElement) -> Void) 
         AXUIElementCopyAttributeValues(appElement, kAXWindowsAttribute as CFString, 0, 9999, &arrayRef)
         guard let elements = arrayRef as? [AXUIElement] else { return }
         for element in elements {
-            var windowId: CGWindowID = 0
-            _AXUIElementGetWindow(element, &windowId)
-            if windowId == window.number ?? 0 {
-                handler(element)
-                break
-            }
+            guard let axWindowID = lookupWindowID(element),
+                  let modelWindowID = window.number,
+                  axWindowID == modelWindowID
+            else { continue }
+            
+            handler(element)
+            break
         }
     }
 }
