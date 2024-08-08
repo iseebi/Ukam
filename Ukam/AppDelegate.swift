@@ -17,11 +17,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         permissionsManager = PermissionsManager()
         windowManager = WindowManager()
-        menuManager = MenuManager(windowManager: windowManager)
+        menuManager = MenuManager(windowManager: windowManager, permissionsManager: permissionsManager)
         
         if !permissionsManager.isPermitted {
-            let window = PermissionsViewController.createWindow(permissionsManager: permissionsManager)
-            window.makeKeyAndOrderFront(nil)
+            permissionsManager.showPermissionsWindow()
         }
     }
 

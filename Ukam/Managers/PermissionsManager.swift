@@ -5,7 +5,7 @@
 //  Created by Nobuhiro Ito on 2024/08/08.
 //
 
-import Foundation
+import Cocoa
 
 extension NSNotification.Name {
     fileprivate static let accessibilityApiChanged = NSNotification.Name(rawValue: "com.apple.accessibility.api")
@@ -59,22 +59,50 @@ class AccessibilityPermission: PermissionItem {
     }
 }
 
-class PermissionsManager {
+class PermissionsManager: NSObject {
     let screenCapture = ScreenCapturePermission()
     let accessibility = AccessibilityPermission()
+    
+    private var permissionsWindow: NSWindow? = nil
     
     var isPermitted: Bool {
         return screenCapture.isPermitted && accessibility.isPermitted
     }
     
-    init() {
+    override init() {
+        super.init()
+        
         screenCapture.delegate = self
         accessibility.delegate = self
+    }
+    
+    func showPermissionsWindow() {
+        guard !isPermitted else { return }
+        if let currentWindow = permissionsWindow {
+            currentWindow.makeKeyAndOrderFront(nil)
+            currentWindow.center()
+            return
+        }
+        
+        let window = PermissionsViewController.createWindow(permissionsManager: self)
+        window.delegate = self
+        window.makeKeyAndOrderFront(nil)
+        permissionsWindow = window
+    }
+}
+
+extension PermissionsManager: NSWindowDelegate {
+    func windowWillClose(_ notification: Notification) {
+        permissionsWindow = nil
     }
 }
 
 extension PermissionsManager: PermissionItemDelegate {
     func permissionItem(_ item: PermissionItem, didUpdatePermitted isPermitted: Bool) {
-        NotificationCenter.default.post(name: .permissionChanged, object: nil)
+        guard isPermitted,
+              let window = permissionsWindow
+        else { return }
+        
+        window.close()
     }
 }

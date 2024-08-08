@@ -10,28 +10,24 @@ import Cocoa
 class MenuManager: NSObject {
     let windowsViewController: WindowsViewController
     let windowManager: WindowManager
+    let permissionsManager: PermissionsManager
     
-    let statusBarMenu: NSMenu
-    let statusBarItem: NSStatusItem
-    let popover: NSPopover
+    let statusBarMenu = NSMenu(title: "Status Menu")
+    let statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     
-    var windows: [Window] = []
-
-    init(windowManager: WindowManager) {
-        self.windowManager = windowManager
-        self.statusBarMenu = NSMenu(title: "Status Menu")
-        let statusBar = NSStatusBar.system
-        statusBarItem = statusBar.statusItem(withLength: NSStatusItem.squareLength)
-        
-        windowsViewController = WindowsViewController(windowManager: windowManager)
-        
-        popover = NSPopover()
+    lazy var popover: NSPopover = {
+        let popover = NSPopover()
         popover.contentViewController = windowsViewController
         popover.behavior = .transient
+        return popover
+    }()
+
+    init(windowManager: WindowManager, permissionsManager: PermissionsManager) {
+        self.windowManager = windowManager
+        self.permissionsManager = permissionsManager
+        windowsViewController = WindowsViewController(windowManager: windowManager)
         
         super.init()
-        
-        windowsViewController.delegate = self
         
         if let button = statusBarItem.button {
             button.image = NSImage(systemSymbolName: "star", accessibilityDescription: "WindowGate")
@@ -45,6 +41,8 @@ class MenuManager: NSObject {
             withTitle: "Exit",
             action: #selector(MenuManager.exitApp),
             keyEquivalent: "").target = self
+        
+        windowsViewController.delegate = self
     }
 
     @objc func exitApp() {
@@ -52,16 +50,32 @@ class MenuManager: NSObject {
     }
     
     @objc func statusBarItemClicked(_ sender: NSStatusItem) {
-        guard let event = NSApp.currentEvent,
-              let button = statusBarItem.button else { return }
+        guard let event = NSApp.currentEvent else { return }
         if event.type == NSEvent.EventType.rightMouseUp {
-            statusBarItem.menu = statusBarMenu
-            button.performClick(nil) // メニューを表示するためのハック
-            statusBarItem.menu = nil // メニューを再度nilに戻す
+            showContextMenu()
         } else {
-            popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
-            popover.contentViewController?.view.window?.makeKey()
+            processPrimaryAction()
         }
+    }
+    
+    func processPrimaryAction() {
+        guard let button = statusBarItem.button else { return }
+        
+        guard permissionsManager.isPermitted else {
+            permissionsManager.showPermissionsWindow()
+            return
+        }
+        
+        popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+        popover.contentViewController?.view.window?.makeKey()
+    }
+    
+    func showContextMenu() {
+        guard let button = statusBarItem.button else { return }
+        
+        statusBarItem.menu = statusBarMenu
+        button.performClick(nil) // メニューを表示するためのハック
+        statusBarItem.menu = nil // メニューを再度nilに戻す
     }
 }
 

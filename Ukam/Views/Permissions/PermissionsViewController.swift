@@ -13,8 +13,6 @@ class PermissionsViewController: NSViewController {
     
     private var containeredView: PermissionsView!
     
-    private var notificationObservers: [NSObjectProtocol] = []
-    
     static func createWindow(permissionsManager: PermissionsManager) -> NSWindow {
         let viewController = PermissionsViewController(permissionsManager: permissionsManager)
         let window = NSWindow(contentViewController: viewController)
@@ -54,10 +52,6 @@ class PermissionsViewController: NSViewController {
             view.trailingAnchor.constraint(equalTo: hostingView.trailingAnchor),
             hostingView.heightAnchor.constraint(equalToConstant: hostingView.intrinsicContentSize.height)
         ])
-        
-        notificationObservers.append(NotificationCenter.default.addObserver(forName: .permissionChanged, object: nil, queue: nil) { [weak self] _ in
-            self?.updatePermissionStatus()
-        })
     }
     
     private func updatePermissionStatus() {
