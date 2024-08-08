@@ -167,7 +167,7 @@
 			dependencies = (
 			);
 			name = Ukam;
-			productName = WindowGate;
+			productName = Ukam;
 			productReference = 82C57EF927D46DB900395627 /* Ukam.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -372,7 +372,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ukam/Ukam.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NARTSSS6TY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Ukam/Info.plist;
@@ -398,7 +398,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ukam/Ukam.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NARTSSS6TY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Ukam/Info.plist;
