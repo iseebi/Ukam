@@ -8,6 +8,63 @@
 import Cocoa
 import ScreenCaptureKit
 
+#if USE_UNDOCUMENTED_API
+
+func lookupWindowID(_ uiElement: AXUIElement) -> CGWindowID? {
+    var windowId: CGWindowID = 0
+    if _AXUIElementGetWindow(uiElement, &windowId) != .success {
+        return nil
+    }
+    return windowId
+}
+
+#else
+
+func lookupWindowPosition(_ axElement: AXUIElement) -> CGPoint {
+    var position: CFTypeRef?
+    if AXUIElementCopyAttributeValue(axElement, kAXPositionAttribute as CFString, &position) != .success {
+        return CGPoint.zero
+    }
+    let pos = position as! AXValue
+    var point = CGPoint.zero
+    AXValueGetValue(pos, .cgPoint, &point)
+    return point
+}
+
+func lookupWindowID(_ uiElement: AXUIElement) -> CGWindowID? {
+    // AXUIElementのプロセスIDを取得
+    var axPid: pid_t = 0
+    if AXUIElementGetPid(uiElement, &axPid) != .success {
+        return nil
+    }
+    
+    // すべてのウィンドウをリストアップ
+    let windowListOptions: CGWindowListOption = [.optionOnScreenOnly, .excludeDesktopElements]
+    guard let windowInfoList = CGWindowListCopyWindowInfo(windowListOptions, kCGNullWindowID) as NSArray? else { return nil }
+    
+    for windowInfo in windowInfoList as! [[String: AnyObject]] {
+        guard let windowID = windowInfo[kCGWindowNumber as String] as? CGWindowID,
+              let pid = windowInfo[kCGWindowOwnerPID as String] as? pid_t,
+              axPid == pid
+        else { continue }
+        
+        // ウィンドウの位置とサイズを取得
+        let position = windowInfo[kCGWindowBounds as String] as! [String: CGFloat]
+        let axPosition = lookupWindowPosition(uiElement)
+        
+        // 位置が一致するかどうかを確認
+        guard position["X"] == axPosition.x && position["Y"] == axPosition.y
+        else { continue }
+        
+//        print(windowInfo)
+        return windowID
+    }
+    
+    return nil
+}
+
+#endif
+
 func appAXUIElementContext(_ window: Window, handler: (AXUIElement) -> Void) {
     guard let pid = window.ownerPID else { return }
     let appElement = AXUIElementCreateApplication(pid_t(pid))
@@ -17,15 +74,17 @@ func appAXUIElementContext(_ window: Window, handler: (AXUIElement) -> Void) {
 func windowAXUIElementContext(_ window: Window, handler: (AXUIElement) -> Void) {
     appAXUIElementContext(window) { appElement in
         var arrayRef: CFArray?
-        AXUIElementCopyAttributeValues(appElement, kAXWindowsAttribute as CFString, 0, 9999, &arrayRef)
-        guard let elements = arrayRef as? [AXUIElement] else { return }
+        guard AXUIElementCopyAttributeValues(appElement, kAXWindowsAttribute as CFString, 0, 9999, &arrayRef) == .success,
+              let elements = arrayRef as? [AXUIElement]
+        else { return }
         for element in elements {
-            var windowId: CGWindowID = 0
-            _AXUIElementGetWindow(element, &windowId)
-            if windowId == window.number ?? 0 {
-                handler(element)
-                break
-            }
+            guard let axWindowID = lookupWindowID(element),
+                  let modelWindowID = window.number,
+                  axWindowID == modelWindowID
+            else { continue }
+            
+            handler(element)
+            break
         }
     }
 }

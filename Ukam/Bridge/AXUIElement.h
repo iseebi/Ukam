@@ -10,6 +10,7 @@
 
 #import <ApplicationServices/ApplicationServices.h>
 
+// undocumented api
 extern AXError _AXUIElementGetWindow(AXUIElementRef, CGWindowID* out);
 
 #endif /* AXUIElement_h */
