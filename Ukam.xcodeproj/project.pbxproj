@@ -12,6 +12,9 @@
 		822CDF4427D4C79300C6B331 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CDF4327D4C79300C6B331 /* WindowManager.swift */; };
 		822CDF4D27D5181D00C6B331 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822CDF4C27D5181D00C6B331 /* CoreGraphics.framework */; platformFilter = maccatalyst; };
 		822CDF5027D52C1C00C6B331 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822CDF4F27D52C1C00C6B331 /* ApplicationServices.framework */; platformFilter = maccatalyst; };
+		828688F52C6512A80059CAEE /* PermissionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828688F42C6512A80059CAEE /* PermissionsManager.swift */; };
+		828688F82C65158B0059CAEE /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828688F72C65158B0059CAEE /* PermissionsView.swift */; };
+		828688FA2C651B6E0059CAEE /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828688F92C651B6E0059CAEE /* PermissionsViewController.swift */; };
 		82B14E002C5CDBF7000B08C3 /* WindowsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B14DFF2C5CDBF7000B08C3 /* WindowsViewController.swift */; };
 		82B14E022C5CDC0E000B08C3 /* WindowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B14E012C5CDC0E000B08C3 /* WindowsView.swift */; };
 		82B14E042C5CE172000B08C3 /* WindowsViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B14E032C5CE172000B08C3 /* WindowsViewDataSource.swift */; };
@@ -32,6 +35,9 @@
 		822CDF4C27D5181D00C6B331 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		822CDF4E27D52C0B00C6B331 /* AXUIElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXUIElement.h; sourceTree = "<group>"; };
 		822CDF4F27D52C1C00C6B331 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		828688F42C6512A80059CAEE /* PermissionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManager.swift; sourceTree = "<group>"; };
+		828688F72C65158B0059CAEE /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
+		828688F92C651B6E0059CAEE /* PermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
 		82B14DFF2C5CDBF7000B08C3 /* WindowsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsViewController.swift; sourceTree = "<group>"; };
 		82B14E012C5CDC0E000B08C3 /* WindowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsView.swift; sourceTree = "<group>"; };
 		82B14E032C5CE172000B08C3 /* WindowsViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowsViewDataSource.swift; sourceTree = "<group>"; };
@@ -74,6 +80,7 @@
 			children = (
 				822CDF3D27D4C6CD00C6B331 /* MenuManager.swift */,
 				822CDF4327D4C79300C6B331 /* WindowManager.swift */,
+				828688F42C6512A80059CAEE /* PermissionsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -97,9 +104,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		828688F62C65154B0059CAEE /* Permissions */ = {
+			isa = PBXGroup;
+			children = (
+				828688F92C651B6E0059CAEE /* PermissionsViewController.swift */,
+				828688F72C65158B0059CAEE /* PermissionsView.swift */,
+			);
+			path = Permissions;
+			sourceTree = "<group>";
+		};
 		82B14DFD2C5CDBDF000B08C3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				828688F62C65154B0059CAEE /* Permissions */,
 				82B14DFE2C5CDBE7000B08C3 /* Windows */,
 				82B14E072C5CF685000B08C3 /* LayoutConstants.swift */,
 			);
@@ -221,12 +238,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				828688F52C6512A80059CAEE /* PermissionsManager.swift in Sources */,
 				822CDF3E27D4C6CD00C6B331 /* MenuManager.swift in Sources */,
 				82B14E022C5CDC0E000B08C3 /* WindowsView.swift in Sources */,
 				82B14E042C5CE172000B08C3 /* WindowsViewDataSource.swift in Sources */,
 				822CDF4127D4C72E00C6B331 /* Window.swift in Sources */,
 				82B14E062C5CED30000B08C3 /* WindowItemView.swift in Sources */,
 				82C57EFF27D46DB900395627 /* ViewController.swift in Sources */,
+				828688FA2C651B6E0059CAEE /* PermissionsViewController.swift in Sources */,
+				828688F82C65158B0059CAEE /* PermissionsView.swift in Sources */,
 				82C57EFD27D46DB900395627 /* AppDelegate.swift in Sources */,
 				82B14E002C5CDBF7000B08C3 /* WindowsViewController.swift in Sources */,
 				822CDF4427D4C79300C6B331 /* WindowManager.swift in Sources */,
