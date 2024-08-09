@@ -28,6 +28,7 @@
 		822CDF4D27D5181D00C6B331 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822CDF4C27D5181D00C6B331 /* CoreGraphics.framework */; platformFilter = maccatalyst; };
 		822CDF5027D52C1C00C6B331 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822CDF4F27D52C1C00C6B331 /* ApplicationServices.framework */; platformFilter = maccatalyst; };
 		82302D0F2C669E4300B8BF8C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 82302D112C669E4300B8BF8C /* Localizable.strings */; };
+		82302D1D2C66A52C00B8BF8C /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 82302D1C2C66A52C00B8BF8C /* RswiftLibrary */; };
 		828688F52C6512A80059CAEE /* PermissionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828688F42C6512A80059CAEE /* PermissionsManager.swift */; };
 		828688F82C65158B0059CAEE /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828688F72C65158B0059CAEE /* PermissionsView.swift */; };
 		828688FA2C651B6E0059CAEE /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828688F92C651B6E0059CAEE /* PermissionsViewController.swift */; };
@@ -77,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				822CDF4D27D5181D00C6B331 /* CoreGraphics.framework in Frameworks */,
+				82302D1D2C66A52C00B8BF8C /* RswiftLibrary in Frameworks */,
 				82B14E0C2C5D11B4000B08C3 /* ScreenCaptureKit.framework in Frameworks */,
 				822CDF5027D52C1C00C6B331 /* ApplicationServices.framework in Frameworks */,
 			);
@@ -201,8 +203,12 @@
 			buildRules = (
 			);
 			dependencies = (
+				82302D1F2C66A54300B8BF8C /* PBXTargetDependency */,
 			);
 			name = Ukam;
+			packageProductDependencies = (
+				82302D1C2C66A52C00B8BF8C /* RswiftLibrary */,
+			);
 			productName = Ukam;
 			productReference = 82C57EF927D46DB900395627 /* Ukam.app */;
 			productType = "com.apple.product-type.application";
@@ -235,6 +241,9 @@
 				ja,
 			);
 			mainGroup = 82C57EF027D46DB900395627;
+			packageReferences = (
+				82302D1B2C66A4F900B8BF8C /* XCRemoteSwiftPackageReference "R.swift" */,
+			);
 			productRefGroup = 82C57EFA27D46DB900395627 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -323,6 +332,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		82302D1F2C66A54300B8BF8C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 82302D1E2C66A54300B8BF8C /* RswiftGenerateInternalResources */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		82302D112C669E4300B8BF8C /* Localizable.strings */ = {
@@ -564,6 +580,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		82302D1B2C66A4F900B8BF8C /* XCRemoteSwiftPackageReference "R.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		82302D1C2C66A52C00B8BF8C /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82302D1B2C66A4F900B8BF8C /* XCRemoteSwiftPackageReference "R.swift" */;
+			productName = RswiftLibrary;
+		};
+		82302D1E2C66A54300B8BF8C /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82302D1B2C66A4F900B8BF8C /* XCRemoteSwiftPackageReference "R.swift" */;
+			productName = "plugin:RswiftGenerateInternalResources";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 82C57EF127D46DB900395627 /* Project object */;
 }
