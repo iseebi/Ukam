@@ -1,0 +1,17 @@
+type: hoshi.version:1
+phrases:
+  app_name:
+    $description: Main App Name
+    en: Ukam
+  permissions_view_request_permission_title:
+    en: Required Permissions
+    ja: 権限の許可
+  permissions_view_request_permission_description:
+    en: Ukam requires the following permissions to work properly.
+    ja: Ukamが動作するには以下の権限が必要です。
+  permissions_view_screen_recording_title:
+    en: Screen Recording
+    ja: 画面収録
+  permissions_view_screen_recording_description:
+    en: Ukam requires screen recording permissions to enumerate windows and create screen capture for window list.
+    ja: ウィンドウの一覧を取得し、ウィンドウリストに表示するスクリーンショットを作成します。
