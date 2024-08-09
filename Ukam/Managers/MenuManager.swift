@@ -30,7 +30,10 @@ class MenuManager: NSObject {
         super.init()
         
         if let button = statusBarItem.button {
-            button.image = NSImage(systemSymbolName: "star", accessibilityDescription: "WindowGate")
+            button.image = NSImage(
+                systemSymbolName: "star",
+                accessibilityDescription: R.string.localizable.app_name()
+            )
             button.target = self
             button.action = #selector(statusBarItemClicked(_:))
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
@@ -38,7 +41,7 @@ class MenuManager: NSObject {
         
         statusBarMenu.autoenablesItems = true
         statusBarMenu.addItem(
-            withTitle: "Exit",
+            withTitle: R.string.localizable.status_menu_exit(),
             action: #selector(MenuManager.exitApp),
             keyEquivalent: "").target = self
         

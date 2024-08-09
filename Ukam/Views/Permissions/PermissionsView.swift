@@ -15,35 +15,36 @@ struct PermissionsView: View {
         VStack {
             VStack(alignment: .center) {
                 Image(.imageIcon)
-                Text("Ukam").font(.title)
+                Text(R.string.localizable.app_name()).font(.title)
             } .padding(EdgeInsets(top: 0, leading: 0, bottom: LayoutConstants.padding, trailing: 0))
             VStack(alignment: .leading, spacing: LayoutConstants.padding * 2) {
                 VStack(alignment: .leading) {
-                    Text("Required Permissions").font(.title2)
-                    Text("Ukam requires the following permissions to work properly.")
+                    Text(R.string.localizable.permissions_view_request_permission_title()).font(.title2)
+                    Text(R.string.localizable.permissions_view_request_permission_description())
                 }
                 
                 VStack(alignment: .leading) {
-                    Text("Screen Recording").font(.headline)
-                    Text("Ukam requires screen recording permissions to enumerate windows and create screen capture for window list.")
+                    Text(R.string.localizable.permissions_view_screen_recording_title()).font(.headline)
+                    Text(R.string.localizable.permissions_view_screen_recording_description())
                         .font(.body)
                         .fixedSize(horizontal: false, vertical: true)
-                    Button("Request Access") {
+                    Button(R.string.localizable.permissions_view_request_access_button()) {
                         self.screenCaptureButtonAction?()
                     }
                 }
                 
                 VStack(alignment: .leading) {
-                    Text("Accessibility").font(.headline)
-                    Text("Ukam requires accessibility permissions to manipulate windows.")
-                    Button("Request Access") {
+                    Text(R.string.localizable.permissions_view_accessibility_title()).font(.headline)
+                    Text(R.string.localizable.permissions_view_accessibility_description())
+                        .font(.body)
+                    Button(R.string.localizable.permissions_view_request_access_button()) {
                         self.accessibilityButtonAction?()
                     }
                 }
                 Spacer()
             }
         }
-        .frame(maxWidth: 480)
+        .frame(maxWidth: LayoutConstants.permissionViewWidth)
         .padding(LayoutConstants.padding * 2)
     }
 }

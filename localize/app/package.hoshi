@@ -1,0 +1,5 @@
+type: hoshi.package:1
+metadata:
+  formats: strings
+  availableTranslations: en,ja
+
