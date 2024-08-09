@@ -1,0 +1,5 @@
+"app_name" = "Ukam";
+"permissions_view_request_permission_description" = "Ukam requires the following permissions to work properly.";
+"permissions_view_request_permission_title" = "Required Permissions";
+"permissions_view_screen_recording_description" = "Ukam requires screen recording permissions to enumerate windows and create screen capture for window list.";
+"permissions_view_screen_recording_title" = "Screen Recording";

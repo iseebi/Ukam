@@ -6,12 +6,28 @@
 	objectVersion = 54;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		82302D132C66A07C00B8BF8C /* Update Localize */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 82302D142C66A07C00B8BF8C /* Build configuration list for PBXAggregateTarget "Update Localize" */;
+			buildPhases = (
+				82302D172C66A08B00B8BF8C /* Download hoshi */,
+				82302D182C66A15100B8BF8C /* Update Localize */,
+			);
+			dependencies = (
+			);
+			name = "Update Localize";
+			productName = "Update Localize";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		822CDF3E27D4C6CD00C6B331 /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CDF3D27D4C6CD00C6B331 /* MenuManager.swift */; };
 		822CDF4127D4C72E00C6B331 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CDF4027D4C72E00C6B331 /* Window.swift */; };
 		822CDF4427D4C79300C6B331 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CDF4327D4C79300C6B331 /* WindowManager.swift */; };
 		822CDF4D27D5181D00C6B331 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822CDF4C27D5181D00C6B331 /* CoreGraphics.framework */; platformFilter = maccatalyst; };
 		822CDF5027D52C1C00C6B331 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822CDF4F27D52C1C00C6B331 /* ApplicationServices.framework */; platformFilter = maccatalyst; };
+		82302D0F2C669E4300B8BF8C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 82302D112C669E4300B8BF8C /* Localizable.strings */; };
 		828688F52C6512A80059CAEE /* PermissionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828688F42C6512A80059CAEE /* PermissionsManager.swift */; };
 		828688F82C65158B0059CAEE /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828688F72C65158B0059CAEE /* PermissionsView.swift */; };
 		828688FA2C651B6E0059CAEE /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828688F92C651B6E0059CAEE /* PermissionsViewController.swift */; };
@@ -35,6 +51,8 @@
 		822CDF4C27D5181D00C6B331 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		822CDF4E27D52C0B00C6B331 /* AXUIElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXUIElement.h; sourceTree = "<group>"; };
 		822CDF4F27D52C1C00C6B331 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		82302D102C669E4300B8BF8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		82302D122C669EB300B8BF8C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		828688F42C6512A80059CAEE /* PermissionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManager.swift; sourceTree = "<group>"; };
 		828688F72C65158B0059CAEE /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
 		828688F92C651B6E0059CAEE /* PermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +179,7 @@
 				82C57EFC27D46DB900395627 /* AppDelegate.swift */,
 				82C57EFE27D46DB900395627 /* ViewController.swift */,
 				82C57F0027D46DC100395627 /* Assets.xcassets */,
+				82302D112C669E4300B8BF8C /* Localizable.strings */,
 				82C57F0227D46DC100395627 /* Main.storyboard */,
 				82C57F0527D46DC100395627 /* Info.plist */,
 				82C57F0627D46DC100395627 /* Ukam.entitlements */,
@@ -197,6 +216,9 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					82302D132C66A07C00B8BF8C = {
+						CreatedOnToolsVersion = 15.2;
+					};
 					82C57EF827D46DB900395627 = {
 						CreatedOnToolsVersion = 12.5;
 						LastSwiftMigration = 1300;
@@ -210,6 +232,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 82C57EF027D46DB900395627;
 			productRefGroup = 82C57EFA27D46DB900395627 /* Products */;
@@ -217,6 +240,7 @@
 			projectRoot = "";
 			targets = (
 				82C57EF827D46DB900395627 /* Ukam */,
+				82302D132C66A07C00B8BF8C /* Update Localize */,
 			);
 		};
 /* End PBXProject section */
@@ -227,11 +251,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				82C57F0127D46DC100395627 /* Assets.xcassets in Resources */,
+				82302D0F2C669E4300B8BF8C /* Localizable.strings in Resources */,
 				82C57F0427D46DC100395627 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		82302D172C66A08B00B8BF8C /* Download hoshi */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Download hoshi";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "hoshi_version=\"0.5.0\"\nhoshi_url=\"https://github.com/iseebi/hoshi/releases/download/v$hoshi_version/hoshi-$hoshi_version-arm64-mac.zip\"\n\nproject_dir=\"$PROJECT_DIR\"\nvendor_dir=\"$project_dir/.vendor\"\nhoshi_cli=\"$vendor_dir/hoshi.app/Contents/hoshi-cli\"\n\nif [ ! -d \"$vendor_dir\" ]; then\n    mkdir -p \"$vendor_dir\"\nfi\n\nif [ ! -e \"$hoshi_cli\" ]; then\n    hoshi_zip=\"$vendor_dir/hoshi.zip\"\n    curl -Lo \"$hoshi_zip\" \"$hoshi_url\"\n    unzip \"$hoshi_zip\" -d \"$vendor_dir/\"\n    rm \"$hoshi_zip\"\n    \n    if [ ! -e \"$hoshi_cli\" ]; then\n        exit 1\n    fi\nfi\n";
+		};
+		82302D182C66A15100B8BF8C /* Update Localize */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Update Localize";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/Ukam/en.lproj/Localizable.strings",
+				"$(SRCROOT)/Ukam/ja.lproj/Localizable.strings",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "hoshi_cli=\"$PROJECT_DIR/.vendor/hoshi.app/Contents/hoshi-cli\"\n\nwork_dir=$(mktemp -d)\nfunction cleanup {\n  rm -rf \"$work_dir\"\n}\ntrap cleanup EXIT\n\n$hoshi_cli publish --project \"$PROJECT_DIR/localize\" --outDir \"$work_dir\" app\n\ncp \"$work_dir/app/strings/en.strings\" \"$PROJECT_DIR/Ukam/en.lproj/Localizable.strings\"\ncp \"$work_dir/app/strings/ja.strings\" \"$PROJECT_DIR/Ukam/ja.lproj/Localizable.strings\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		82C57EF527D46DB900395627 /* Sources */ = {
@@ -257,6 +325,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		82302D112C669E4300B8BF8C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				82302D102C669E4300B8BF8C /* en */,
+				82302D122C669EB300B8BF8C /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		82C57F0227D46DC100395627 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -268,10 +345,29 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		82302D152C66A07C00B8BF8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NARTSSS6TY;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		82302D162C66A07C00B8BF8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NARTSSS6TY;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		82C57F0727D46DC100395627 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -333,6 +429,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -439,6 +536,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		82302D142C66A07C00B8BF8C /* Build configuration list for PBXAggregateTarget "Update Localize" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82302D152C66A07C00B8BF8C /* Debug */,
+				82302D162C66A07C00B8BF8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		82C57EF427D46DB900395627 /* Build configuration list for PBXProject "Ukam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
