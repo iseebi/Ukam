@@ -3,6 +3,7 @@ phrases:
   app_name:
     $description: Main App Name
     en: Ukam
+    ja: Ukam
   permissions_view_request_permission_title:
     en: Required Permissions
     ja: 権限の許可
@@ -15,3 +16,15 @@ phrases:
   permissions_view_screen_recording_description:
     en: Ukam requires screen recording permissions to enumerate windows and create screen capture for window list.
     ja: ウィンドウの一覧を取得し、ウィンドウリストに表示するスクリーンショットを作成します。
+  permissions_view_accessibility_title:
+    en: Accessibility
+    ja: アクセシビリティ
+  permissions_view_accessibility_description:
+    en: Ukam requires accessibility permissions to manipulate windows.
+    ja: ウィンドウを移動したり、最前面に移動させる操作をします。
+  permissions_view_request_access_button:
+    en: Request Access
+    ja: アクセスを許可
+  status_menu_exit:
+    en: Exit
+    ja: 終了

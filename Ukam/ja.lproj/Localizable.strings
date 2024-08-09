@@ -1,5 +1,9 @@
-"app_name" = "";
+"app_name" = "Ukam";
+"permissions_view_accessibility_description" = "ウィンドウを移動したり、最前面に移動させる操作をします。";
+"permissions_view_accessibility_title" = "アクセシビリティ";
+"permissions_view_request_access_button" = "アクセスを許可";
 "permissions_view_request_permission_description" = "Ukamが動作するには以下の権限が必要です。";
 "permissions_view_request_permission_title" = "権限の許可";
 "permissions_view_screen_recording_description" = "ウィンドウの一覧を取得し、ウィンドウリストに表示するスクリーンショットを作成します。";
 "permissions_view_screen_recording_title" = "画面収録";
+"status_menu_exit" = "終了";
