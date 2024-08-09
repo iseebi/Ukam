@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "82C57EF827D46DB900395627"
-               BuildableName = "WindowGate.app"
-               BlueprintName = "WindowGate"
-               ReferencedContainer = "container:WindowGate.xcodeproj">
+               BuildableName = "Ukam.app"
+               BlueprintName = "Ukam"
+               ReferencedContainer = "container:Ukam.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "82C57EF827D46DB900395627"
-            BuildableName = "WindowGate.app"
-            BlueprintName = "WindowGate"
-            ReferencedContainer = "container:WindowGate.xcodeproj">
+            BuildableName = "Ukam.app"
+            BlueprintName = "Ukam"
+            ReferencedContainer = "container:Ukam.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "82C57EF827D46DB900395627"
-            BuildableName = "WindowGate.app"
-            BlueprintName = "WindowGate"
-            ReferencedContainer = "container:WindowGate.xcodeproj">
+            BuildableName = "Ukam.app"
+            BlueprintName = "Ukam"
+            ReferencedContainer = "container:Ukam.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

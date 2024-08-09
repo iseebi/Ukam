@@ -28,7 +28,7 @@
 		822CDF3D27D4C6CD00C6B331 /* MenuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
 		822CDF4027D4C72E00C6B331 /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		822CDF4327D4C79300C6B331 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
-		822CDF4727D517E400C6B331 /* WindowGate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WindowGate-Bridging-Header.h"; sourceTree = "<group>"; };
+		822CDF4727D517E400C6B331 /* Ukam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ukam-Bridging-Header.h"; sourceTree = "<group>"; };
 		822CDF4C27D5181D00C6B331 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		822CDF4E27D52C0B00C6B331 /* AXUIElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AXUIElement.h; sourceTree = "<group>"; };
 		822CDF4F27D52C1C00C6B331 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
@@ -38,13 +38,13 @@
 		82B14E052C5CED30000B08C3 /* WindowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowItemView.swift; sourceTree = "<group>"; };
 		82B14E072C5CF685000B08C3 /* LayoutConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutConstants.swift; sourceTree = "<group>"; };
 		82B14E0B2C5D11B4000B08C3 /* ScreenCaptureKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenCaptureKit.framework; path = System/Library/Frameworks/ScreenCaptureKit.framework; sourceTree = SDKROOT; };
-		82C57EF927D46DB900395627 /* WindowGate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WindowGate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		82C57EF927D46DB900395627 /* Ukam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ukam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82C57EFC27D46DB900395627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82C57EFE27D46DB900395627 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		82C57F0027D46DC100395627 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82C57F0327D46DC100395627 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		82C57F0527D46DC100395627 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		82C57F0627D46DC100395627 /* WindowGate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WindowGate.entitlements; sourceTree = "<group>"; };
+		82C57F0627D46DC100395627 /* Ukam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ukam.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +81,7 @@
 		822CDF4527D517A100C6B331 /* Bridge */ = {
 			isa = PBXGroup;
 			children = (
-				822CDF4727D517E400C6B331 /* WindowGate-Bridging-Header.h */,
+				822CDF4727D517E400C6B331 /* Ukam-Bridging-Header.h */,
 				822CDF4E27D52C0B00C6B331 /* AXUIElement.h */,
 			);
 			path = Bridge;
@@ -120,7 +120,7 @@
 		82C57EF027D46DB900395627 = {
 			isa = PBXGroup;
 			children = (
-				82C57EFB27D46DB900395627 /* WindowGate */,
+				82C57EFB27D46DB900395627 /* Ukam */,
 				82C57EFA27D46DB900395627 /* Products */,
 				822CDF4B27D5181D00C6B331 /* Frameworks */,
 			);
@@ -129,12 +129,12 @@
 		82C57EFA27D46DB900395627 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				82C57EF927D46DB900395627 /* WindowGate.app */,
+				82C57EF927D46DB900395627 /* Ukam.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		82C57EFB27D46DB900395627 /* WindowGate */ = {
+		82C57EFB27D46DB900395627 /* Ukam */ = {
 			isa = PBXGroup;
 			children = (
 				82B14DFD2C5CDBDF000B08C3 /* Views */,
@@ -146,17 +146,17 @@
 				82C57F0027D46DC100395627 /* Assets.xcassets */,
 				82C57F0227D46DC100395627 /* Main.storyboard */,
 				82C57F0527D46DC100395627 /* Info.plist */,
-				82C57F0627D46DC100395627 /* WindowGate.entitlements */,
+				82C57F0627D46DC100395627 /* Ukam.entitlements */,
 			);
-			path = WindowGate;
+			path = Ukam;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		82C57EF827D46DB900395627 /* WindowGate */ = {
+		82C57EF827D46DB900395627 /* Ukam */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 82C57F0927D46DC100395627 /* Build configuration list for PBXNativeTarget "WindowGate" */;
+			buildConfigurationList = 82C57F0927D46DC100395627 /* Build configuration list for PBXNativeTarget "Ukam" */;
 			buildPhases = (
 				82C57EF527D46DB900395627 /* Sources */,
 				82C57EF627D46DB900395627 /* Frameworks */,
@@ -166,9 +166,9 @@
 			);
 			dependencies = (
 			);
-			name = WindowGate;
-			productName = WindowGate;
-			productReference = 82C57EF927D46DB900395627 /* WindowGate.app */;
+			name = Ukam;
+			productName = Ukam;
+			productReference = 82C57EF927D46DB900395627 /* Ukam.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 82C57EF427D46DB900395627 /* Build configuration list for PBXProject "WindowGate" */;
+			buildConfigurationList = 82C57EF427D46DB900395627 /* Build configuration list for PBXProject "Ukam" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -199,7 +199,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				82C57EF827D46DB900395627 /* WindowGate */,
+				82C57EF827D46DB900395627 /* Ukam */,
 			);
 		};
 /* End PBXProject section */
@@ -369,21 +369,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = WindowGate/WindowGate.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Ukam/Ukam.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NARTSSS6TY;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = WindowGate/Info.plist;
+				INFOPLIST_FILE = Ukam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.iseteki.WindowGate;
+				PRODUCT_BUNDLE_IDENTIFIER = net.iseteki.Ukam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "WindowGate/Bridge/WindowGate-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ukam/Bridge/Ukam-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -395,21 +395,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = WindowGate/WindowGate.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Ukam/Ukam.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NARTSSS6TY;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = WindowGate/Info.plist;
+				INFOPLIST_FILE = Ukam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.iseteki.WindowGate;
+				PRODUCT_BUNDLE_IDENTIFIER = net.iseteki.Ukam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "WindowGate/Bridge/WindowGate-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ukam/Bridge/Ukam-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -417,7 +417,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		82C57EF427D46DB900395627 /* Build configuration list for PBXProject "WindowGate" */ = {
+		82C57EF427D46DB900395627 /* Build configuration list for PBXProject "Ukam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				82C57F0727D46DC100395627 /* Debug */,
@@ -426,7 +426,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		82C57F0927D46DC100395627 /* Build configuration list for PBXNativeTarget "WindowGate" */ = {
+		82C57F0927D46DC100395627 /* Build configuration list for PBXNativeTarget "Ukam" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				82C57F0A27D46DC100395627 /* Debug */,
