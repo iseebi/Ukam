@@ -1,6 +1,7 @@
 "about_view_acknowledgements" = "Acknowledgements";
 "about_view_copyright" = "(C) Nobuhiro Ito.";
 "about_view_title" = "About Ukam";
+"acknowledgements_view_close" = "Close";
 "app_name" = "Ukam";
 "permissions_view_accessibility_description" = "Ukam requires accessibility permissions to manipulate windows.";
 "permissions_view_accessibility_title" = "Accessibility";

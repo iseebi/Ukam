@@ -1,6 +1,7 @@
 "about_view_acknowledgements" = "謝辞";
 "about_view_copyright" = "(C) Nobuhiro Ito.";
 "about_view_title" = "Ukamについて";
+"acknowledgements_view_close" = "閉じる";
 "app_name" = "Ukam";
 "permissions_view_accessibility_description" = "ウィンドウを移動したり、最前面に移動させる操作をします。";
 "permissions_view_accessibility_title" = "アクセシビリティ";

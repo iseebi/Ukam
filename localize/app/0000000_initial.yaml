@@ -43,4 +43,6 @@ phrases:
   about_view_acknowledgements:
     en: Acknowledgements
     ja: 謝辞
-
+  acknowledgements_view_close:
+    en: Close
+    ja: 閉じる

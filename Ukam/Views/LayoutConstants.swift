@@ -12,6 +12,10 @@ struct LayoutConstants {
     static let cornerRadius: CGFloat = 8
     
     static let permissionViewWidth: CGFloat = 480
+    static let aboutViewWidth: CGFloat = 300
+    static let acknowledgementsViewWidth: CGFloat = 480
+    static let acknowledgementsViewHeight: CGFloat = 480
+    
     static let windowsFrameWidth: CGFloat = 300
     static let screenshotWidth: CGFloat = 240
     static let screenshotHeight: CGFloat = 100

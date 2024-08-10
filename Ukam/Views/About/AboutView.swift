@@ -30,12 +30,12 @@ struct AboutView: View {
                     self.showingSheet.toggle()
                 }
                 .sheet(isPresented: $showingSheet) {
-                    AcknowledgementsView()
+                    AcknowledgementsView(dataSource: BundleAcknowledgementsDataSource())
                 }
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .frame(maxWidth: 300)
+        .frame(maxWidth: LayoutConstants.aboutViewWidth)
         .padding(LayoutConstants.padding * 2)
     }
 }
