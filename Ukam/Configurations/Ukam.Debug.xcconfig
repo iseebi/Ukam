@@ -1,0 +1,10 @@
+//
+//  Ukam.Debug.xcconfig
+//  Ukam
+//
+//  Created by Nobuhiro Ito on 2024/08/10.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+#include "Version.xcconfig"

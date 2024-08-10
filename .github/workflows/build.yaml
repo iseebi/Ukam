@@ -1,0 +1,112 @@
+name: Build/release
+
+on:
+  push:
+#    branches:
+#      - main
+#      - develop
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: macos-14
+    permissions:
+      contents: write
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v1
+
+      - name: Install Certificates
+        run: |
+          DEV_CERTIFICATE_PATH=$RUNNER_TEMP/dev_certificate.p12
+          BUILD_CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
+          KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
+
+          echo -n "$DEV_CERTIFICATE_BASE64"   | base64 --decode -o $DEV_CERTIFICATE_PATH
+          echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode -o $BUILD_CERTIFICATE_PATH
+
+          security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+
+          security import $DEV_CERTIFICATE_PATH   -P "$DEV_P12_PASSWORD"   -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
+          security import $BUILD_CERTIFICATE_PATH -P "$BUILD_P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
+          security list-keychain -d user -s $KEYCHAIN_PATH
+
+          rm $DEV_CERTIFICATE_PATH
+          rm $BUILD_CERTIFICATE_PATH
+        env:
+          BUILD_CERTIFICATE_BASE64: ${{ secrets.MAC_CERTS }}
+          BUILD_P12_PASSWORD: ${{ secrets.MAC_CERTS_PASSWORD }}
+          DEV_CERTIFICATE_BASE64: ${{ secrets.MAC_DEV_CERTS }}
+          DEV_P12_PASSWORD: ${{ secrets.MAC_DEV_CERTS_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+
+      - name: Prepare for app notarization
+        run: |
+          mkdir -p ~/private_keys/
+          echo '${{ secrets.ASC_KEY }}' > ~/private_keys/AuthKey_${{ secrets.ASC_KEY_ID }}.p8
+
+      - name: configure exportOptions.plist
+        run: |
+          /usr/libexec/PlistBuddy -c "Set :teamID ${{ secrets.MAC_TEAM_ID }}" exportOptions.plist
+
+      - name: build macOS App
+        run: |
+          export MARKETING_VERSION=${MARKETING_VERSION_V#v}
+
+          echo "" > Ukam/Configurations/Version.xcconfig
+          echo "MARKETING_VERSION = $MARKETING_VERSION" >> Ukam/Configurations/Version.xcconfig
+          echo "CURRENT_PROJECT_VERSION = $CURRENT_PROJECT_VERSION" >> Ukam/Configurations/Version.xcconfig
+          cat Ukam/Configurations/Version.xcconfig
+
+          defaults write com.apple.dt.Xcode IDESkipPackagePluginFingerprintValidatation -bool YES
+
+          xcodebuild archive -project Ukam.xcodeproj -scheme Ukam -archivePath build/Ukam.xcarchive
+          xcodebuild -exportArchive -archivePath build/Ukam.xcarchive -exportPath build/ -exportOptionsPlist exportOptions.plist
+          
+          cd build/
+          zip -r Ukam.zip Ukam.app
+          zip -r Ukam.xcarchive.zip Ukam.xcarchive
+          mkdir dmgBase
+          cp -r Ukam.app dmgBase/
+          hdiutil create -volname Ukam -srcfolder dmgBase -ov -format UDZO Ukam.dmg
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_15.3.app/Contents/Developer
+          CURRENT_PROJECT_VERSION: ${{github.run_number}}
+          MARKETING_VERSION_V: ${{github.ref_name}}
+      
+      - name: Notarize macOS App
+        run: |
+          xcrun notarytool submit "build/Ukam.zip" --key "$KEY_PATH" --key-id "$KEY_ID" --issuer "$ISSUER_ID"
+          xcrun notarytool submit "build/Ukam.dmg" --key "$KEY_PATH" --key-id "$KEY_ID" --issuer "$ISSUER_ID" --wait 
+          xcrun stapler staple "build/Ukam.dmg"
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_15.3.app/Contents/Developer
+          KEY_PATH: ~/private_keys/AuthKey_${{ secrets.ASC_KEY_ID }}.p8
+          KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ISSUER_ID:  ${{ secrets.ASC_ISSUER_ID }}
+
+      - name: Create release
+        if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+        run: |
+          gh release create --draft --generate-notes ${{ github.ref_name }} build/Ukam.zip build/Ukam.dmg
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Clean up keychain and provisioning profile
+        if: ${{ always() }}
+        run: |
+          security delete-keychain $RUNNER_TEMP/app-signing.keychain-db
+          rm -rf ~/private_keys/
+
+      - name: Store artifacts
+        if: ${{ ! failure() }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: |
+            build/Ukam.xcarchive.zip
+            build/Ukam.dmg
+            build/Ukam.zip
