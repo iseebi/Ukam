@@ -41,7 +41,6 @@
 		82C57EFD27D46DB900395627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C57EFC27D46DB900395627 /* AppDelegate.swift */; };
 		82C57EFF27D46DB900395627 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C57EFE27D46DB900395627 /* ViewController.swift */; };
 		82C57F0127D46DC100395627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82C57F0027D46DC100395627 /* Assets.xcassets */; };
-		82C57F0427D46DC100395627 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82C57F0227D46DC100395627 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,7 +69,6 @@
 		82C57EFC27D46DB900395627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82C57EFE27D46DB900395627 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		82C57F0027D46DC100395627 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		82C57F0327D46DC100395627 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		82C57F0527D46DC100395627 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82C57F0627D46DC100395627 /* Ukam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ukam.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -195,7 +193,6 @@
 				82C57EFE27D46DB900395627 /* ViewController.swift */,
 				82C57F0027D46DC100395627 /* Assets.xcassets */,
 				82302D112C669E4300B8BF8C /* Localizable.strings */,
-				82C57F0227D46DC100395627 /* Main.storyboard */,
 				826008222C674A0E00ACD8A7 /* Configurations */,
 				82C57F0527D46DC100395627 /* Info.plist */,
 				82C57F0627D46DC100395627 /* Ukam.entitlements */,
@@ -233,8 +230,9 @@
 		82C57EF127D46DB900395627 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					82302D132C66A07C00B8BF8C = {
 						CreatedOnToolsVersion = 15.2;
@@ -275,7 +273,6 @@
 			files = (
 				82C57F0127D46DC100395627 /* Assets.xcassets in Resources */,
 				82302D0F2C669E4300B8BF8C /* Localizable.strings in Resources */,
-				82C57F0427D46DC100395627 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,14 +361,6 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		82C57F0227D46DC100395627 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				82C57F0327D46DC100395627 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -379,6 +368,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = NARTSSS6TY;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -388,6 +378,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = NARTSSS6TY;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -428,6 +419,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -490,6 +482,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -520,6 +513,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ukam/Ukam.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = NARTSSS6TY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Ukam/Info.plist;
@@ -546,6 +540,7 @@
 				CODE_SIGN_ENTITLEMENTS = Ukam/Ukam.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = NARTSSS6TY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Ukam/Info.plist;
