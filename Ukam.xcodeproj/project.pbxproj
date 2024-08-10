@@ -39,8 +39,8 @@
 		82B14E082C5CF685000B08C3 /* LayoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B14E072C5CF685000B08C3 /* LayoutConstants.swift */; };
 		82B14E0C2C5D11B4000B08C3 /* ScreenCaptureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B14E0B2C5D11B4000B08C3 /* ScreenCaptureKit.framework */; };
 		82C57EFD27D46DB900395627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C57EFC27D46DB900395627 /* AppDelegate.swift */; };
-		82C57EFF27D46DB900395627 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C57EFE27D46DB900395627 /* ViewController.swift */; };
 		82C57F0127D46DC100395627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82C57F0027D46DC100395627 /* Assets.xcassets */; };
+		82C57F0427D46DC100395627 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82C57F0227D46DC100395627 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,8 +67,8 @@
 		82B14E0B2C5D11B4000B08C3 /* ScreenCaptureKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenCaptureKit.framework; path = System/Library/Frameworks/ScreenCaptureKit.framework; sourceTree = SDKROOT; };
 		82C57EF927D46DB900395627 /* Ukam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ukam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82C57EFC27D46DB900395627 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		82C57EFE27D46DB900395627 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		82C57F0027D46DC100395627 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		82C57F0327D46DC100395627 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		82C57F0527D46DC100395627 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82C57F0627D46DC100395627 /* Ukam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ukam.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,9 +190,9 @@
 				822CDF4227D4C77F00C6B331 /* Managers */,
 				822CDF3F27D4C71F00C6B331 /* Model */,
 				82C57EFC27D46DB900395627 /* AppDelegate.swift */,
-				82C57EFE27D46DB900395627 /* ViewController.swift */,
 				82C57F0027D46DC100395627 /* Assets.xcassets */,
 				82302D112C669E4300B8BF8C /* Localizable.strings */,
+				82C57F0227D46DC100395627 /* Main.storyboard */,
 				826008222C674A0E00ACD8A7 /* Configurations */,
 				82C57F0527D46DC100395627 /* Info.plist */,
 				82C57F0627D46DC100395627 /* Ukam.entitlements */,
@@ -273,6 +273,7 @@
 			files = (
 				82C57F0127D46DC100395627 /* Assets.xcassets in Resources */,
 				82302D0F2C669E4300B8BF8C /* Localizable.strings in Resources */,
+				82C57F0427D46DC100395627 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +333,6 @@
 				82B14E042C5CE172000B08C3 /* WindowsViewDataSource.swift in Sources */,
 				822CDF4127D4C72E00C6B331 /* Window.swift in Sources */,
 				82B14E062C5CED30000B08C3 /* WindowItemView.swift in Sources */,
-				82C57EFF27D46DB900395627 /* ViewController.swift in Sources */,
 				828688FA2C651B6E0059CAEE /* PermissionsViewController.swift in Sources */,
 				828688F82C65158B0059CAEE /* PermissionsView.swift in Sources */,
 				82C57EFD27D46DB900395627 /* AppDelegate.swift in Sources */,
@@ -359,6 +359,14 @@
 				82302D122C669EB300B8BF8C /* ja */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		82C57F0227D46DC100395627 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				82C57F0327D46DC100395627 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
