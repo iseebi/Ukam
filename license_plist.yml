@@ -1,0 +1,4 @@
+options:
+  xcodeprojPath: Ukam.xcodeproj
+  prefix: Acknowledgements
+  singlePage: true

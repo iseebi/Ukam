@@ -32,6 +32,7 @@
 		826008282C67511200ACD8A7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826008272C67511200ACD8A7 /* AboutViewController.swift */; };
 		8260082A2C67511A00ACD8A7 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826008292C67511A00ACD8A7 /* AboutView.swift */; };
 		8260082D2C6755A500ACD8A7 /* AcknowledgementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8260082C2C6755A500ACD8A7 /* AcknowledgementsView.swift */; };
+		8260083E2C675CA600ACD8A7 /* AcknowledgementsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8260083D2C675CA600ACD8A7 /* AcknowledgementsDataSource.swift */; };
 		828688F52C6512A80059CAEE /* PermissionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828688F42C6512A80059CAEE /* PermissionsManager.swift */; };
 		828688F82C65158B0059CAEE /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828688F72C65158B0059CAEE /* PermissionsView.swift */; };
 		828688FA2C651B6E0059CAEE /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828688F92C651B6E0059CAEE /* PermissionsViewController.swift */; };
@@ -62,6 +63,7 @@
 		826008272C67511200ACD8A7 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		826008292C67511A00ACD8A7 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		8260082C2C6755A500ACD8A7 /* AcknowledgementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsView.swift; sourceTree = "<group>"; };
+		8260083D2C675CA600ACD8A7 /* AcknowledgementsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsDataSource.swift; sourceTree = "<group>"; };
 		828688F42C6512A80059CAEE /* PermissionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManager.swift; sourceTree = "<group>"; };
 		828688F72C65158B0059CAEE /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
 		828688F92C651B6E0059CAEE /* PermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				826008272C67511200ACD8A7 /* AboutViewController.swift */,
 				826008292C67511A00ACD8A7 /* AboutView.swift */,
 				8260082C2C6755A500ACD8A7 /* AcknowledgementsView.swift */,
+				8260083D2C675CA600ACD8A7 /* AcknowledgementsDataSource.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -226,11 +229,13 @@
 			buildPhases = (
 				82C57EF527D46DB900395627 /* Sources */,
 				82C57EF627D46DB900395627 /* Frameworks */,
+				82C5D37D2C675B3000395627 /* Copy Acknowledgements */,
 				82C57EF727D46DB900395627 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				826008372C675AAB00ACD8A7 /* PBXTargetDependency */,
 				82302D1F2C66A54300B8BF8C /* PBXTargetDependency */,
 			);
 			name = Ukam;
@@ -272,6 +277,7 @@
 			mainGroup = 82C57EF027D46DB900395627;
 			packageReferences = (
 				82302D1B2C66A4F900B8BF8C /* XCRemoteSwiftPackageReference "R.swift" */,
+				826008342C675A9700ACD8A7 /* XCRemoteSwiftPackageReference "LicensePlist" */,
 			);
 			productRefGroup = 82C57EFA27D46DB900395627 /* Products */;
 			projectDirPath = "";
@@ -337,6 +343,21 @@
 			shellPath = /bin/sh;
 			shellScript = "hoshi_cli=\"$PROJECT_DIR/.vendor/hoshi.app/Contents/hoshi-cli\"\n\nwork_dir=$(mktemp -d)\nfunction cleanup {\n  rm -rf \"$work_dir\"\n}\ntrap cleanup EXIT\n\n$hoshi_cli publish --project \"$PROJECT_DIR/localize\" --outDir \"$work_dir\" app\n\ncp \"$work_dir/app/strings/en.strings\" \"$PROJECT_DIR/Ukam/en.lproj/Localizable.strings\"\ncp \"$work_dir/app/strings/ja.strings\" \"$PROJECT_DIR/Ukam/ja.lproj/Localizable.strings\"\n";
 		};
+		82C5D37D2C675B3000395627 /* Copy Acknowledgements */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Acknowledgements";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Will copy acknowledgements\"\n\nACKNOWLEDGEMENTS_DIR=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/com.mono0926.LicensePlist.Output\nDESTINATION_PATH=${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/Settings.bundle/\n\necho $ACKNOWLEDGEMENTS_DIR\necho $DESTINATION_PATH\n\n\n#cp -r \"${ACKNOWLEDGEMENTS_DIR}\"/* \"${DESTINATION_PATH}\"\n#rm -rf \"${ACKNOWLEDGEMENTS_DIR}\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -346,6 +367,7 @@
 			files = (
 				828688F52C6512A80059CAEE /* PermissionsManager.swift in Sources */,
 				822CDF3E27D4C6CD00C6B331 /* MenuManager.swift in Sources */,
+				8260083E2C675CA600ACD8A7 /* AcknowledgementsDataSource.swift in Sources */,
 				82B14E022C5CDC0E000B08C3 /* WindowsView.swift in Sources */,
 				82B14E042C5CE172000B08C3 /* WindowsViewDataSource.swift in Sources */,
 				8260082A2C67511A00ACD8A7 /* AboutView.swift in Sources */,
@@ -368,6 +390,10 @@
 		82302D1F2C66A54300B8BF8C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 82302D1E2C66A54300B8BF8C /* RswiftGenerateInternalResources */;
+		};
+		826008372C675AAB00ACD8A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 826008362C675AAB00ACD8A7 /* LicensePlistBuildTool */;
 		};
 /* End PBXTargetDependency section */
 
@@ -625,6 +651,14 @@
 				minimumVersion = 7.5.0;
 			};
 		};
+		826008342C675A9700ACD8A7 /* XCRemoteSwiftPackageReference "LicensePlist" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mono0926/LicensePlist.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.25.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -637,6 +671,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 82302D1B2C66A4F900B8BF8C /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = "plugin:RswiftGenerateInternalResources";
+		};
+		826008362C675AAB00ACD8A7 /* LicensePlistBuildTool */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 826008342C675A9700ACD8A7 /* XCRemoteSwiftPackageReference "LicensePlist" */;
+			productName = "plugin:LicensePlistBuildTool";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
