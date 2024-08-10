@@ -21,6 +21,8 @@ class MenuManager: NSObject {
         popover.behavior = .transient
         return popover
     }()
+    
+    private var aboutWindow: NSWindow?
 
     init(windowManager: WindowManager, permissionsManager: PermissionsManager) {
         self.windowManager = windowManager
@@ -41,11 +43,25 @@ class MenuManager: NSObject {
         
         statusBarMenu.autoenablesItems = true
         statusBarMenu.addItem(
+            withTitle: R.string.localizable.status_menu_about(),
+            action: #selector(MenuManager.showAbout),
+            keyEquivalent: "").target = self
+        statusBarMenu.addItem(
             withTitle: R.string.localizable.status_menu_exit(),
             action: #selector(MenuManager.exitApp),
             keyEquivalent: "").target = self
         
         windowsViewController.delegate = self
+    }
+    
+    @objc func showAbout() {
+        let aboutWindow = self.aboutWindow ?? {
+            let newWindow = AboutViewController.createWindow()
+            newWindow.delegate = self
+            self.aboutWindow = newWindow
+            return newWindow
+        }()
+        aboutWindow.makeKeyAndOrderFront(nil)
     }
 
     @objc func exitApp() {
@@ -85,5 +101,16 @@ class MenuManager: NSObject {
 extension MenuManager: WindowsViewControllerDelegate {
     func windowsViewController(_ viewController: WindowsViewController, didSelectWindow window: WindowLike) {
         popover.close()
+    }
+}
+
+extension MenuManager: NSWindowDelegate {
+    func windowWillClose(_ notification: Notification) {
+        guard let window = notification.object as? NSWindow
+        else { return }
+        
+        if window == aboutWindow {
+            aboutWindow = nil
+        }
     }
 }

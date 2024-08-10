@@ -4,6 +4,9 @@ phrases:
     $description: Main App Name
     en: Ukam
     ja: Ukam
+  permissions_view_title:
+    en: Ukam
+    ja: Ukam
   permissions_view_request_permission_title:
     en: Required Permissions
     ja: 権限の許可
@@ -28,3 +31,16 @@ phrases:
   status_menu_exit:
     en: Exit
     ja: 終了
+  status_menu_about:
+    en: About Ukam
+    ja: Ukamについて
+  about_view_title:
+    en: About Ukam
+    ja: Ukamについて
+  about_view_copyright:
+    en: (C) Nobuhiro Ito.
+    ja: (C) Nobuhiro Ito.
+  about_view_acknowledgements:
+    en: Acknowledgements
+    ja: 謝辞
+

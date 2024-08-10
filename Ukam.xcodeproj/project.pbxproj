@@ -29,6 +29,9 @@
 		822CDF5027D52C1C00C6B331 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822CDF4F27D52C1C00C6B331 /* ApplicationServices.framework */; platformFilter = maccatalyst; };
 		82302D0F2C669E4300B8BF8C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 82302D112C669E4300B8BF8C /* Localizable.strings */; };
 		82302D1D2C66A52C00B8BF8C /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 82302D1C2C66A52C00B8BF8C /* RswiftLibrary */; };
+		826008282C67511200ACD8A7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826008272C67511200ACD8A7 /* AboutViewController.swift */; };
+		8260082A2C67511A00ACD8A7 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826008292C67511A00ACD8A7 /* AboutView.swift */; };
+		8260082D2C6755A500ACD8A7 /* AcknowledgementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8260082C2C6755A500ACD8A7 /* AcknowledgementsView.swift */; };
 		828688F52C6512A80059CAEE /* PermissionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828688F42C6512A80059CAEE /* PermissionsManager.swift */; };
 		828688F82C65158B0059CAEE /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828688F72C65158B0059CAEE /* PermissionsView.swift */; };
 		828688FA2C651B6E0059CAEE /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828688F92C651B6E0059CAEE /* PermissionsViewController.swift */; };
@@ -56,6 +59,9 @@
 		8260081F2C67497900ACD8A7 /* Ukam.Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Ukam.Release.xcconfig; sourceTree = "<group>"; };
 		826008202C67499A00ACD8A7 /* Ukam.Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Ukam.Debug.xcconfig; sourceTree = "<group>"; };
 		826008212C674A0800ACD8A7 /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
+		826008272C67511200ACD8A7 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		826008292C67511A00ACD8A7 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		8260082C2C6755A500ACD8A7 /* AcknowledgementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsView.swift; sourceTree = "<group>"; };
 		828688F42C6512A80059CAEE /* PermissionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManager.swift; sourceTree = "<group>"; };
 		828688F72C65158B0059CAEE /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
 		828688F92C651B6E0059CAEE /* PermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +141,16 @@
 			path = Configurations;
 			sourceTree = "<group>";
 		};
+		826008262C6750FB00ACD8A7 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				826008272C67511200ACD8A7 /* AboutViewController.swift */,
+				826008292C67511A00ACD8A7 /* AboutView.swift */,
+				8260082C2C6755A500ACD8A7 /* AcknowledgementsView.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
 		828688F62C65154B0059CAEE /* Permissions */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +165,7 @@
 			children = (
 				828688F62C65154B0059CAEE /* Permissions */,
 				82B14DFE2C5CDBE7000B08C3 /* Windows */,
+				826008262C6750FB00ACD8A7 /* About */,
 				82B14E072C5CF685000B08C3 /* LayoutConstants.swift */,
 			);
 			path = Views;
@@ -331,11 +348,14 @@
 				822CDF3E27D4C6CD00C6B331 /* MenuManager.swift in Sources */,
 				82B14E022C5CDC0E000B08C3 /* WindowsView.swift in Sources */,
 				82B14E042C5CE172000B08C3 /* WindowsViewDataSource.swift in Sources */,
+				8260082A2C67511A00ACD8A7 /* AboutView.swift in Sources */,
 				822CDF4127D4C72E00C6B331 /* Window.swift in Sources */,
 				82B14E062C5CED30000B08C3 /* WindowItemView.swift in Sources */,
 				828688FA2C651B6E0059CAEE /* PermissionsViewController.swift in Sources */,
 				828688F82C65158B0059CAEE /* PermissionsView.swift in Sources */,
 				82C57EFD27D46DB900395627 /* AppDelegate.swift in Sources */,
+				8260082D2C6755A500ACD8A7 /* AcknowledgementsView.swift in Sources */,
+				826008282C67511200ACD8A7 /* AboutViewController.swift in Sources */,
 				82B14E002C5CDBF7000B08C3 /* WindowsViewController.swift in Sources */,
 				822CDF4427D4C79300C6B331 /* WindowManager.swift in Sources */,
 				82B14E082C5CF685000B08C3 /* LayoutConstants.swift in Sources */,
