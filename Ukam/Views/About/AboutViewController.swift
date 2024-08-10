@@ -1,29 +1,26 @@
 //
-//  PermissionsViewController.swift
+//  AboutViewController.swift
 //  Ukam
 //
-//  Created by Nobuhiro Ito on 2024/08/09.
+//  Created by Nobuhiro Ito on 2024/08/10.
 //
 
 import Cocoa
 import SwiftUI
 
-class PermissionsViewController: NSViewController {
-    private let permissionsManager: PermissionsManager
+class AboutViewController: NSViewController {
+    private var containeredView: AboutView!
     
-    private var containeredView: PermissionsView!
-    
-    static func createWindow(permissionsManager: PermissionsManager) -> NSWindow {
-        let viewController = PermissionsViewController(permissionsManager: permissionsManager)
+    static func createWindow() -> NSWindow {
+        let viewController = AboutViewController()
         let window = NSWindow(contentViewController: viewController)
-        window.title = R.string.localizable.permissions_view_title()
+        window.title = R.string.localizable.about_view_title()
         window.styleMask = [.titled, .closable]
         window.center()
         return window
     }
     
-    init(permissionsManager: PermissionsManager) {
-        self.permissionsManager = permissionsManager
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -34,13 +31,7 @@ class PermissionsViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        containeredView = PermissionsView()
-        containeredView.screenCaptureButtonAction = { [weak self] in
-            self?.permissionsManager.screenCapture.requestAccess()
-        }
-        containeredView.accessibilityButtonAction = { [weak self] in
-            self?.permissionsManager.accessibility.requestAccess()
-        }
+        containeredView = AboutView()
         
         let hostingView = NSHostingView(rootView: containeredView)
         hostingView.translatesAutoresizingMaskIntoConstraints = false
@@ -52,9 +43,5 @@ class PermissionsViewController: NSViewController {
             view.trailingAnchor.constraint(equalTo: hostingView.trailingAnchor),
             hostingView.heightAnchor.constraint(equalToConstant: hostingView.intrinsicContentSize.height)
         ])
-    }
-    
-    private func updatePermissionStatus() {
-        self.view.window?.close()
     }
 }

@@ -1,3 +1,7 @@
+"about_view_acknowledgements" = "Acknowledgements";
+"about_view_copyright" = "(C) Nobuhiro Ito.";
+"about_view_title" = "About Ukam";
+"acknowledgements_view_close" = "Close";
 "app_name" = "Ukam";
 "permissions_view_accessibility_description" = "Ukam requires accessibility permissions to manipulate windows.";
 "permissions_view_accessibility_title" = "Accessibility";
@@ -6,4 +10,6 @@
 "permissions_view_request_permission_title" = "Required Permissions";
 "permissions_view_screen_recording_description" = "Ukam requires screen recording permissions to enumerate windows and create screen capture for window list.";
 "permissions_view_screen_recording_title" = "Screen Recording";
+"permissions_view_title" = "Ukam";
+"status_menu_about" = "About Ukam";
 "status_menu_exit" = "Exit";
