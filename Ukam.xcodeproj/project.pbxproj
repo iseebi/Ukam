@@ -54,6 +54,9 @@
 		822CDF4F27D52C1C00C6B331 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		82302D102C669E4300B8BF8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		82302D122C669EB300B8BF8C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8260081F2C67497900ACD8A7 /* Ukam.Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Ukam.Release.xcconfig; sourceTree = "<group>"; };
+		826008202C67499A00ACD8A7 /* Ukam.Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Ukam.Debug.xcconfig; sourceTree = "<group>"; };
+		826008212C674A0800ACD8A7 /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
 		828688F42C6512A80059CAEE /* PermissionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManager.swift; sourceTree = "<group>"; };
 		828688F72C65158B0059CAEE /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
 		828688F92C651B6E0059CAEE /* PermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +127,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		826008222C674A0E00ACD8A7 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				8260081F2C67497900ACD8A7 /* Ukam.Release.xcconfig */,
+				826008202C67499A00ACD8A7 /* Ukam.Debug.xcconfig */,
+				826008212C674A0800ACD8A7 /* Version.xcconfig */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
 		828688F62C65154B0059CAEE /* Permissions */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +196,7 @@
 				82C57F0027D46DC100395627 /* Assets.xcassets */,
 				82302D112C669E4300B8BF8C /* Localizable.strings */,
 				82C57F0227D46DC100395627 /* Main.storyboard */,
+				826008222C674A0E00ACD8A7 /* Configurations */,
 				82C57F0527D46DC100395627 /* Info.plist */,
 				82C57F0627D46DC100395627 /* Ukam.entitlements */,
 			);
@@ -498,6 +512,7 @@
 		};
 		82C57F0A27D46DC100395627 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 826008202C67499A00ACD8A7 /* Ukam.Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -505,7 +520,6 @@
 				CODE_SIGN_ENTITLEMENTS = Ukam/Ukam.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NARTSSS6TY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Ukam/Info.plist;
@@ -513,7 +527,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
 				OTHER_SWIFT_FLAGS = "\"-DUSE_UNDOCUMENTED_API\"";
 				PRODUCT_BUNDLE_IDENTIFIER = net.iseteki.Ukam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -525,6 +538,7 @@
 		};
 		82C57F0B27D46DC100395627 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8260081F2C67497900ACD8A7 /* Ukam.Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -532,7 +546,6 @@
 				CODE_SIGN_ENTITLEMENTS = Ukam/Ukam.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NARTSSS6TY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Ukam/Info.plist;
@@ -540,7 +553,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
 				OTHER_SWIFT_FLAGS = "\"-DUSE_UNDOCUMENTED_API\"";
 				PRODUCT_BUNDLE_IDENTIFIER = net.iseteki.Ukam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
