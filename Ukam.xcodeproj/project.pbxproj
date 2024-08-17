@@ -57,6 +57,8 @@
 		822CDF4F27D52C1C00C6B331 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		82302D102C669E4300B8BF8C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		82302D122C669EB300B8BF8C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		82479F742C7095A80063996B /* SkyLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkyLight.h; sourceTree = "<group>"; };
+		82479F752C7096110063996B /* Ukam.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Ukam.xcconfig; sourceTree = "<group>"; };
 		8260081F2C67497900ACD8A7 /* Ukam.Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Ukam.Release.xcconfig; sourceTree = "<group>"; };
 		826008202C67499A00ACD8A7 /* Ukam.Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Ukam.Debug.xcconfig; sourceTree = "<group>"; };
 		826008212C674A0800ACD8A7 /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				822CDF4727D517E400C6B331 /* Ukam-Bridging-Header.h */,
 				822CDF4E27D52C0B00C6B331 /* AXUIElement.h */,
+				82479F742C7095A80063996B /* SkyLight.h */,
 			);
 			path = Bridge;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 		826008222C674A0E00ACD8A7 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
+				82479F752C7096110063996B /* Ukam.xcconfig */,
 				8260081F2C67497900ACD8A7 /* Ukam.Release.xcconfig */,
 				826008202C67499A00ACD8A7 /* Ukam.Debug.xcconfig */,
 				826008212C674A0800ACD8A7 /* Version.xcconfig */,
