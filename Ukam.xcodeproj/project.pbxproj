@@ -575,7 +575,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				OTHER_SWIFT_FLAGS = "\"-DUSE_UNDOCUMENTED_API\"";
 				PRODUCT_BUNDLE_IDENTIFIER = net.iseteki.Ukam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ukam/Bridge/Ukam-Bridging-Header.h";
@@ -602,7 +601,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				OTHER_SWIFT_FLAGS = "\"-DUSE_UNDOCUMENTED_API\"";
 				PRODUCT_BUNDLE_IDENTIFIER = net.iseteki.Ukam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ukam/Bridge/Ukam-Bridging-Header.h";
