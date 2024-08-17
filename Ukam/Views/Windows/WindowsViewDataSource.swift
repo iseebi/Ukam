@@ -8,12 +8,12 @@
 import Cocoa
 
 protocol WindowsViewDataSourceDelegate {
-    func windowsViewDataSource(_ dataSource: WindowsViewDataSource, didRequestedScreenCaptureFor window: WindowLike, resultHandler: @escaping (NSImage?) -> Void)
+    func windowsViewDataSource(_ dataSource: WindowsViewDataSource, didRequestedScreenCaptureFor window: CGWindowLike, resultHandler: @escaping (NSImage?) -> Void)
 }
 
 class WindowsViewDataSource: ObservableObject {
     class WindowItem: ObservableObject, Identifiable, Equatable, Hashable {
-        fileprivate(set) var window: WindowLike {
+        fileprivate(set) var window: CGWindowLike {
             didSet {
                 name = window.name ?? ""
                 ownerName = window.ownerName ?? ""
@@ -26,7 +26,7 @@ class WindowsViewDataSource: ObservableObject {
         @Published var icon: NSImage? = nil
         @Published var screenshot: NSImage? = nil
         
-        init(window: WindowLike) {
+        init(window: CGWindowLike) {
             self.window = window
             name = window.name ?? ""
             ownerName = window.ownerName ?? ""
@@ -50,7 +50,7 @@ class WindowsViewDataSource: ObservableObject {
         items = []
     }
     
-    func refresh(_ newItems: [any WindowLike]) {
+    func refresh(_ newItems: [any CGWindowLike]) {
         let lastItems = items
         items = newItems.map {[weak self] newItem in
             let item = lastItems.first(where: { $0.window.number == newItem.number }) ?? WindowItem(window: newItem)

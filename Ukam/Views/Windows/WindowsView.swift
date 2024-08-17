@@ -8,7 +8,7 @@
 import SwiftUI
 
 protocol WindowsViewDelegate {
-    func didSelectWindow(_ window: WindowLike)
+    func didSelectWindow(_ window: CGWindowLike)
 }
 
 struct WindowsView: View {
@@ -73,7 +73,7 @@ struct WindowsView: View {
     return WindowsView(dataSource: ds)
 }
 
-struct WindowMock: WindowLike {
+struct WindowMock: CGWindowLike {
     var id: Int
     var isVisible: Bool = true
     var name: String?

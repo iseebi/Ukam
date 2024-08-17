@@ -9,7 +9,7 @@ import Cocoa
 import SwiftUI
 
 protocol WindowsViewControllerDelegate: AnyObject {
-    func windowsViewController(_ viewController: WindowsViewController, didSelectWindow window: WindowLike)
+    func windowsViewController(_ viewController: WindowsViewController, didSelectWindow window: CGWindowLike)
 }
 
 class WindowsViewController: NSViewController {
@@ -20,7 +20,7 @@ class WindowsViewController: NSViewController {
     private var dataSoruce = WindowsViewDataSource()
     private var containeredView: WindowsView!
     
-    private var windows: [Window] = []
+    private var windows: [CGWindow] = []
     
     init(windowManager: WindowManager) {
         self.windowManager = windowManager
@@ -62,7 +62,7 @@ class WindowsViewController: NSViewController {
 }
 
 extension WindowsViewController: WindowsViewDataSourceDelegate {
-    func windowsViewDataSource(_ dataSource: WindowsViewDataSource, didRequestedScreenCaptureFor window: WindowLike, resultHandler: @escaping (NSImage?) -> Void) {
+    func windowsViewDataSource(_ dataSource: WindowsViewDataSource, didRequestedScreenCaptureFor window: CGWindowLike, resultHandler: @escaping (NSImage?) -> Void) {
         guard let rawWindow = windows.first(where: { $0.number == window.number }) else { return }
         windowManager.captureImage(rawWindow, requestedSize: CGSize(width: LayoutConstants.screenshotWidth, height: LayoutConstants.screenshotHeight)) { image in
             resultHandler(image)
@@ -71,7 +71,7 @@ extension WindowsViewController: WindowsViewDataSourceDelegate {
 }
 
 extension WindowsViewController: WindowsViewDelegate {
-    func didSelectWindow(_ window: WindowLike) {
+    func didSelectWindow(_ window: CGWindowLike) {
         guard let rawWindow = windows.first(where: { $0.number == window.number }) else { return }
         windowManager.moveWindowIfNeeded(rawWindow)
         windowManager.activate(rawWindow)
