@@ -13,3 +13,5 @@
 "permissions_view_title" = "Ukam";
 "status_menu_about" = "About Ukam";
 "status_menu_exit" = "Exit";
+"status_menu_launch_at_login" = "Launch at Login";
+"status_menu_settings" = "Settings";
