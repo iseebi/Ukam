@@ -1,0 +1,15 @@
+//
+//  Ukam.xcconfig
+//  Ukam
+//
+//  Created by Nobuhiro Ito on 2024/08/17.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// Private Framework をリンクできるようにする
+FRAMEWORK_SEARCH_PATHS = $(inherited) /System/Library/PrivateFrameworks
+// Private Framework をリンクする
+// - SkyLight: SLS からはじまる関数が定義されているフレームワーク。Spacesの操作に使用する。
+OTHER_LDFLAGS = $(inherited) -framework SkyLight

@@ -8,15 +8,15 @@
 import Cocoa
 
 protocol WindowsViewDataSourceDelegate {
-    func windowsViewDataSource(_ dataSource: WindowsViewDataSource, didRequestedScreenCaptureFor window: WindowLike, resultHandler: @escaping (NSImage?) -> Void)
+    func windowsViewDataSource(_ dataSource: WindowsViewDataSource, didRequestedScreenCaptureFor windows: [UkamWindowLike], resultHandler: @escaping ([(UkamWindowLike.ID, NSImage)]) -> Void)
 }
 
 class WindowsViewDataSource: ObservableObject {
     class WindowItem: ObservableObject, Identifiable, Equatable, Hashable {
-        fileprivate(set) var window: WindowLike {
+        fileprivate(set) var window: UkamWindowLike {
             didSet {
-                name = window.name ?? ""
-                ownerName = window.ownerName ?? ""
+                name = window.name
+                ownerName = window.ownerName
             }
         }
         
@@ -26,10 +26,10 @@ class WindowsViewDataSource: ObservableObject {
         @Published var icon: NSImage? = nil
         @Published var screenshot: NSImage? = nil
         
-        init(window: WindowLike) {
+        init(window: UkamWindowLike) {
             self.window = window
-            name = window.name ?? ""
-            ownerName = window.ownerName ?? ""
+            name = window.name
+            ownerName = window.ownerName 
         }
         
         static func == (lhs: WindowItem, rhs: WindowItem) -> Bool {
@@ -50,27 +50,31 @@ class WindowsViewDataSource: ObservableObject {
         items = []
     }
     
-    func refresh(_ newItems: [any WindowLike]) {
+    func refresh(_ newWindows: [UkamWindowLike]) {
         let lastItems = items
-        items = newItems.map {[weak self] newItem in
-            let item = lastItems.first(where: { $0.window.number == newItem.number }) ?? WindowItem(window: newItem)
+        items = newWindows.map {[weak self] newItem in
+            let item = lastItems.first(where: { $0.window.id == newItem.id }) ?? WindowItem(window: newItem)
             item.window = newItem
             
-            self?.attachImages(for: item)
+            if item.icon == nil {
+                self?.icon(for: item.window.ownerPID) { image in
+                    item.icon = image
+                }
+            }
             
             return item
         }
+        updateScreenshots()
     }
     
-    private func attachImages(for window: WindowItem) {
-        guard let pid = window.window.ownerPID else { return }
-        
-        icon(for: pid) { image in
-            window.icon = image
-        }
-        
-        delegate?.windowsViewDataSource(self, didRequestedScreenCaptureFor: window.window, resultHandler: { image in
-            window.screenshot = image
+    private func updateScreenshots() {
+        let windows = self.items.map { $0.window }
+        delegate?.windowsViewDataSource(self, didRequestedScreenCaptureFor: windows, resultHandler: {[weak self] images in
+            guard let self = self else { return }
+            let windowImagesDict = Dictionary(uniqueKeysWithValues: images)
+            self.items.forEach { item in
+                item.screenshot = windowImagesDict[item.window.id]
+            }
         })
     }
     
