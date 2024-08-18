@@ -12,6 +12,8 @@
 "permissions_view_screen_recording_title" = "画面収録";
 "permissions_view_title" = "Ukam";
 "status_menu_about" = "Ukamについて";
+"status_menu_automatically_check_for_updates" = "更新を自動的に確認";
+"status_menu_check_for_updates" = "更新を確認";
 "status_menu_exit" = "終了";
 "status_menu_launch_at_login" = "ログイン時に起動";
 "status_menu_settings" = "設定";

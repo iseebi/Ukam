@@ -12,6 +12,8 @@
 "permissions_view_screen_recording_title" = "Screen Recording";
 "permissions_view_title" = "Ukam";
 "status_menu_about" = "About Ukam";
+"status_menu_automatically_check_for_updates" = "Automatically check for updates";
+"status_menu_check_for_updates" = "Check for Updates";
 "status_menu_exit" = "Exit";
 "status_menu_launch_at_login" = "Launch at Login";
 "status_menu_settings" = "Settings";

@@ -1,0 +1,14 @@
+type: hoshi.version:1
+phrases:
+  status_menu_settings:
+    en: Settings
+    ja: 設定
+  status_menu_launch_at_login:
+    en: Launch at Login
+    ja: ログイン時に起動
+  status_menu_check_for_updates:
+    en: Check for Updates
+    ja: 更新を確認
+  status_menu_automatically_check_for_updates:
+    en: Automatically check for updates
+    ja: 更新を自動的に確認
