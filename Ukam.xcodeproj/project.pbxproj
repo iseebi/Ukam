@@ -25,8 +25,8 @@
 		822CDF3E27D4C6CD00C6B331 /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CDF3D27D4C6CD00C6B331 /* MenuManager.swift */; };
 		822CDF4127D4C72E00C6B331 /* CGWindowModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CDF4027D4C72E00C6B331 /* CGWindowModels.swift */; };
 		822CDF4427D4C79300C6B331 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CDF4327D4C79300C6B331 /* WindowManager.swift */; };
-		822CDF4D27D5181D00C6B331 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822CDF4C27D5181D00C6B331 /* CoreGraphics.framework */; platformFilter = maccatalyst; };
-		822CDF5027D52C1C00C6B331 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822CDF4F27D52C1C00C6B331 /* ApplicationServices.framework */; platformFilter = maccatalyst; };
+		822CDF4D27D5181D00C6B331 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822CDF4C27D5181D00C6B331 /* CoreGraphics.framework */; };
+		822CDF5027D52C1C00C6B331 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822CDF4F27D52C1C00C6B331 /* ApplicationServices.framework */; };
 		82302D0F2C669E4300B8BF8C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 82302D112C669E4300B8BF8C /* Localizable.strings */; };
 		82302D1D2C66A52C00B8BF8C /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 82302D1C2C66A52C00B8BF8C /* RswiftLibrary */; };
 		82479F7D2C709A100063996B /* SkyLightModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82479F7C2C709A100063996B /* SkyLightModels.swift */; };
@@ -101,9 +101,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				82479FAA2C71D9520063996B /* Sparkle in Frameworks */,
+				82302D1D2C66A52C00B8BF8C /* RswiftLibrary in Frameworks */,
 				822CDF4D27D5181D00C6B331 /* CoreGraphics.framework in Frameworks */,
 				82479FA62C71D4AE0063996B /* ServiceManagement.framework in Frameworks */,
-				82302D1D2C66A52C00B8BF8C /* RswiftLibrary in Frameworks */,
 				822CDF5027D52C1C00C6B331 /* ApplicationServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,6 +608,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				OTHER_CODE_SIGN_FLAGS = "--deep --timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = net.iseteki.Ukam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ukam/Bridge/Ukam-Bridging-Header.h";
@@ -634,6 +635,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				OTHER_CODE_SIGN_FLAGS = "--deep --timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = net.iseteki.Ukam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ukam/Bridge/Ukam-Bridging-Header.h";
