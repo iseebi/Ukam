@@ -9,7 +9,7 @@ import Cocoa
 import SwiftUI
 
 protocol WindowsViewControllerDelegate: AnyObject {
-    func windowsViewController(_ viewController: WindowsViewController, didSelectWindow window: CGWindowLike)
+    func windowsViewController(_ viewController: WindowsViewController, didSelectWindow window: UkamWindowLike)
 }
 
 class WindowsViewController: NSViewController {
@@ -20,7 +20,7 @@ class WindowsViewController: NSViewController {
     private var dataSoruce = WindowsViewDataSource()
     private var containeredView: WindowsView!
     
-    private var windows: [CGWindow] = []
+    private var windows: [UkamWindow] = []
     
     init(windowManager: WindowManager) {
         self.windowManager = windowManager
@@ -62,18 +62,18 @@ class WindowsViewController: NSViewController {
 }
 
 extension WindowsViewController: WindowsViewDataSourceDelegate {
-    func windowsViewDataSource(_ dataSource: WindowsViewDataSource, didRequestedScreenCaptureFor window: CGWindowLike, resultHandler: @escaping (NSImage?) -> Void) {
-        guard let rawWindow = windows.first(where: { $0.number == window.number }) else { return }
-        windowManager.captureImage(rawWindow, requestedSize: CGSize(width: LayoutConstants.screenshotWidth, height: LayoutConstants.screenshotHeight)) { image in
-            resultHandler(image)
+    func windowsViewDataSource(_ dataSource: WindowsViewDataSource, didRequestedScreenCaptureFor windows: [UkamWindowLike], resultHandler: @escaping ([(UInt32, NSImage)]) -> Void) {
+        let windows = windows.compactMap { $0 as? UkamWindow }
+        let requestedSize = CGSize(width: LayoutConstants.screenshotWidth, height: LayoutConstants.screenshotHeight)
+        windowManager.imagesForWindows(windows, requestedSize: requestedSize) { images in
+            resultHandler(images)
         }
     }
 }
 
 extension WindowsViewController: WindowsViewDelegate {
-    func didSelectWindow(_ window: CGWindowLike) {
-        guard let rawWindow = windows.first(where: { $0.number == window.number }) else { return }
-        windowManager.moveWindowIfNeeded(rawWindow)
+    func didSelectWindow(_ window: UkamWindowLike) {
+        guard let rawWindow = windows.first(where: { $0.id == window.id }) else { return }
         windowManager.activate(rawWindow)
         delegate?.windowsViewController(self, didSelectWindow: rawWindow);
     }

@@ -23,14 +23,16 @@
 
 /* Begin PBXBuildFile section */
 		822CDF3E27D4C6CD00C6B331 /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CDF3D27D4C6CD00C6B331 /* MenuManager.swift */; };
-		822CDF4127D4C72E00C6B331 /* CGWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CDF4027D4C72E00C6B331 /* CGWindow.swift */; };
+		822CDF4127D4C72E00C6B331 /* CGWindowModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CDF4027D4C72E00C6B331 /* CGWindowModels.swift */; };
 		822CDF4427D4C79300C6B331 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CDF4327D4C79300C6B331 /* WindowManager.swift */; };
 		822CDF4D27D5181D00C6B331 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822CDF4C27D5181D00C6B331 /* CoreGraphics.framework */; platformFilter = maccatalyst; };
 		822CDF5027D52C1C00C6B331 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 822CDF4F27D52C1C00C6B331 /* ApplicationServices.framework */; platformFilter = maccatalyst; };
 		82302D0F2C669E4300B8BF8C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 82302D112C669E4300B8BF8C /* Localizable.strings */; };
 		82302D1D2C66A52C00B8BF8C /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 82302D1C2C66A52C00B8BF8C /* RswiftLibrary */; };
-		82479F792C70972E0063996B /* WindowManager+Capture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82479F782C70972E0063996B /* WindowManager+Capture.swift */; };
-		82479F7B2C70988C0063996B /* WindowManager+AXUIElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82479F7A2C70988C0063996B /* WindowManager+AXUIElement.swift */; };
+		82479F7D2C709A100063996B /* SkyLightModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82479F7C2C709A100063996B /* SkyLightModels.swift */; };
+		82479F802C709DE90063996B /* UkamWindowModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82479F7F2C709DE90063996B /* UkamWindowModels.swift */; };
+		82479F852C71AE750063996B /* SkyLightOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82479F842C71AE750063996B /* SkyLightOperations.swift */; };
+		82479F872C71B0210063996B /* CGWindowOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82479F862C71B0210063996B /* CGWindowOperations.swift */; };
 		826008282C67511200ACD8A7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826008272C67511200ACD8A7 /* AboutViewController.swift */; };
 		8260082A2C67511A00ACD8A7 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826008292C67511A00ACD8A7 /* AboutView.swift */; };
 		8260082D2C6755A500ACD8A7 /* AcknowledgementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8260082C2C6755A500ACD8A7 /* AcknowledgementsView.swift */; };
@@ -51,7 +53,7 @@
 
 /* Begin PBXFileReference section */
 		822CDF3D27D4C6CD00C6B331 /* MenuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
-		822CDF4027D4C72E00C6B331 /* CGWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGWindow.swift; sourceTree = "<group>"; };
+		822CDF4027D4C72E00C6B331 /* CGWindowModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGWindowModels.swift; sourceTree = "<group>"; };
 		822CDF4327D4C79300C6B331 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
 		822CDF4727D517E400C6B331 /* Ukam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ukam-Bridging-Header.h"; sourceTree = "<group>"; };
 		822CDF4C27D5181D00C6B331 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -61,8 +63,10 @@
 		82302D122C669EB300B8BF8C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		82479F742C7095A80063996B /* SkyLight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkyLight.h; sourceTree = "<group>"; };
 		82479F752C7096110063996B /* Ukam.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Ukam.xcconfig; sourceTree = "<group>"; };
-		82479F782C70972E0063996B /* WindowManager+Capture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowManager+Capture.swift"; sourceTree = "<group>"; };
-		82479F7A2C70988C0063996B /* WindowManager+AXUIElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WindowManager+AXUIElement.swift"; sourceTree = "<group>"; };
+		82479F7C2C709A100063996B /* SkyLightModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyLightModels.swift; sourceTree = "<group>"; };
+		82479F7F2C709DE90063996B /* UkamWindowModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UkamWindowModels.swift; sourceTree = "<group>"; };
+		82479F842C71AE750063996B /* SkyLightOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyLightOperations.swift; sourceTree = "<group>"; };
+		82479F862C71B0210063996B /* CGWindowOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGWindowOperations.swift; sourceTree = "<group>"; };
 		8260081F2C67497900ACD8A7 /* Ukam.Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Ukam.Release.xcconfig; sourceTree = "<group>"; };
 		826008202C67499A00ACD8A7 /* Ukam.Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Ukam.Debug.xcconfig; sourceTree = "<group>"; };
 		826008212C674A0800ACD8A7 /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
@@ -105,7 +109,9 @@
 		822CDF3F27D4C71F00C6B331 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				822CDF4027D4C72E00C6B331 /* CGWindow.swift */,
+				82479F7F2C709DE90063996B /* UkamWindowModels.swift */,
+				822CDF4027D4C72E00C6B331 /* CGWindowModels.swift */,
+				82479F7C2C709A100063996B /* SkyLightModels.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -144,8 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				822CDF4327D4C79300C6B331 /* WindowManager.swift */,
-				82479F782C70972E0063996B /* WindowManager+Capture.swift */,
-				82479F7A2C70988C0063996B /* WindowManager+AXUIElement.swift */,
+				82479F842C71AE750063996B /* SkyLightOperations.swift */,
+				82479F862C71B0210063996B /* CGWindowOperations.swift */,
 			);
 			path = Window;
 			sourceTree = "<group>";
@@ -383,24 +389,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82479F7D2C709A100063996B /* SkyLightModels.swift in Sources */,
 				828688F52C6512A80059CAEE /* PermissionsManager.swift in Sources */,
 				822CDF3E27D4C6CD00C6B331 /* MenuManager.swift in Sources */,
-				82479F792C70972E0063996B /* WindowManager+Capture.swift in Sources */,
 				8260083E2C675CA600ACD8A7 /* AcknowledgementsDataSource.swift in Sources */,
 				82B14E022C5CDC0E000B08C3 /* WindowsView.swift in Sources */,
-				82479F7B2C70988C0063996B /* WindowManager+AXUIElement.swift in Sources */,
 				82B14E042C5CE172000B08C3 /* WindowsViewDataSource.swift in Sources */,
 				8260082A2C67511A00ACD8A7 /* AboutView.swift in Sources */,
-				822CDF4127D4C72E00C6B331 /* CGWindow.swift in Sources */,
+				822CDF4127D4C72E00C6B331 /* CGWindowModels.swift in Sources */,
 				82B14E062C5CED30000B08C3 /* WindowItemView.swift in Sources */,
 				828688FA2C651B6E0059CAEE /* PermissionsViewController.swift in Sources */,
 				828688F82C65158B0059CAEE /* PermissionsView.swift in Sources */,
+				82479F852C71AE750063996B /* SkyLightOperations.swift in Sources */,
 				82C57EFD27D46DB900395627 /* AppDelegate.swift in Sources */,
 				8260082D2C6755A500ACD8A7 /* AcknowledgementsView.swift in Sources */,
 				826008282C67511200ACD8A7 /* AboutViewController.swift in Sources */,
+				82479F872C71B0210063996B /* CGWindowOperations.swift in Sources */,
 				82B14E002C5CDBF7000B08C3 /* WindowsViewController.swift in Sources */,
 				822CDF4427D4C79300C6B331 /* WindowManager.swift in Sources */,
 				82B14E082C5CF685000B08C3 /* LayoutConstants.swift in Sources */,
+				82479F802C709DE90063996B /* UkamWindowModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

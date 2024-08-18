@@ -8,7 +8,7 @@
 import SwiftUI
 
 protocol WindowsViewDelegate {
-    func didSelectWindow(_ window: CGWindowLike)
+    func didSelectWindow(_ window: UkamWindowLike)
 }
 
 struct WindowsView: View {
@@ -73,22 +73,24 @@ struct WindowsView: View {
     return WindowsView(dataSource: ds)
 }
 
-struct WindowMock: CGWindowLike {
-    var id: Int
-    var isVisible: Bool = true
-    var name: String?
-    var number: Int? {
-        get { return id }
-    }
-    var ownerName: String? = "Owner"
-    var ownerPID: Int? = nil
-    var isOnScreen: Bool = true
-    var alpha: CGFloat = 1
-    var windowLayer: Int = 0
-    var bounds: NSRect = NSRect.zero
+struct WindowMock: UkamWindowLike {
+    var id: UInt32
+    var skyLightID: UInt32
+    var ownerPID: Int
+    var name: String
+    var ownerName: String
+    var isVisible: Bool
+    var isOnScreen: Bool
+    var bounds: NSRect
     
-    init(id: Int, name: String) {
+    init(id: UInt32, name: String) {
         self.id = id
+        self.skyLightID = id
+        self.ownerPID = 0
         self.name = name
+        self.ownerName = "Owner"
+        self.isVisible = true
+        self.isOnScreen = true
+        self.bounds = NSRect(x: 0, y: 0, width: 100, height: 100)
     }
 }

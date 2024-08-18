@@ -9,75 +9,64 @@ import Cocoa
 import ScreenCaptureKit
 
 class WindowManager {
-    func enumerateVisibles() -> [CGWindow] {
-        return enumerate().filter { $0.isVisible }
-    }
+    let cgWindowOperations = CGWindowOperations()
+    let skyLightOperations = SkyLightOperations()
     
-    func enumerate() -> [CGWindow] {
-        //find all the windows (CGWindows)
-        let options = CGWindowListOption(arrayLiteral: CGWindowListOption.optionOnScreenOnly)
-        guard let results = CGWindowListCopyWindowInfo(options, CGWindowID(0)),
-              let windowList = results as NSArray? as? [[String: AnyObject]]
-        else { return [] }
+    func enumerateVisibles() -> [UkamWindow] {
+        let monitors = skyLightOperations.enumerateMonitors()
+        let slsWindows = monitors.flatMap { monitor in
+            monitor.spaces.filter{
+                // フルスクリーンアプリには対応していない
+                $0.type != .fullscreenApp
+            }.flatMap { space in
+                skyLightOperations.enumerateWindows(in: space).map { window in
+                    (window, space, monitor, monitor.currentSpace.managedSpaceID == space.managedSpaceID)
+                }
+            }
+        }
         
-        return windowList.map { CGWindow(rawData: $0) }
-    }
-    
-    func activate(_ window: CGWindow){
-        activateWindowApp(window)
-        windowAXUIElementContext(window) { element in
-            AXUIElementSetAttributeValue(element, kAXFocusedAttribute as CFString, kCFBooleanTrue)
-            AXUIElementPerformAction(element, kAXRaiseAction as CFString)
+        let allCGWindows = cgWindowOperations.enumerateWindows()
+        let menuBarWindow = allCGWindows.first { $0.name == "Menubar" }
+        let cgWindows = allCGWindows.filter {
+            // メニューバーよりも上にあるウィンドウは対象外(StatusItemなど)
+            if let memuBarLayer = menuBarWindow?.windowLayer, $0.windowLayer >= memuBarLayer { return false }
+            // 表示対象になっているウィンドウのみが対象
+            if !$0.isVisible { return false }
+            return true
+        }
+        let cgWindowDict = Dictionary(uniqueKeysWithValues: cgWindows.map { ($0.id, $0) })
+        
+        return slsWindows.compactMap { slsWindow, space, monitor, isCurrentSpace in
+            guard let cgWindow = cgWindowDict[Int(slsWindow.id)] else { return nil }
+            return UkamWindow(skyLightWindow: slsWindow, cgWindow: cgWindow, monitorID: monitor.id, spaceID: space.id)
         }
     }
     
-    func moveWindowIfNeeded(_ window: CGWindow) {
-        guard let screen = NSScreen.main else { return }
-        guard !NSIntersectsRect(window.bounds, screen.visibleFrame) else { return }
-        var newRect = NSRect(origin: screen.visibleFrame.origin, size: window.bounds.size)
-        if ( screen.visibleFrame.width < window.bounds.width) {
-            newRect.size.width = screen.visibleFrame.width
-        }
-        if ( screen.visibleFrame.height < window.bounds.height) {
-            newRect.size.height = screen.visibleFrame.height
-        }
+    func activate(_ window: UkamWindow){
+        guard let cgWindow = window.cgWindow as? CGWindow else { return }
+        cgWindowOperations.moveWindowIfNeeded(cgWindow)
+        cgWindowOperations.activate(cgWindow)
+    }
+    
+    func imagesForWindows(_ windows: [UkamWindow], requestedSize: CGSize, completionHandler: @escaping (([(UkamWindowLike.ID, NSImage)]) -> Void)) {
+        #if USE_SCREEN_CAPTURE_KIT
+        let op = self.cgWindowOperations
+        let paramWindows = windows.compactMap({ $0.cgWindow as? CGWindow })
+        #else
+        let op = self.skyLightOperations
+        let paramWindows = windows.compactMap({ $0.skyLightWindow as? SLSWindow })
+        #endif
         
-        // 上下左右中央にする
-        newRect.origin.x += (screen.visibleFrame.width - newRect.width) / 2
-        newRect.origin.y += (screen.visibleFrame.height - newRect.height) / 2
-        
-        windowAXUIElementContext(window) { element in
-            if let originValue = AXValueCreate(AXValueType.cgPoint, &newRect.origin),
-               let sizeValue = AXValueCreate(AXValueType.cgSize, &newRect.size) {
-                AXUIElementSetAttributeValue(
-                    element, kAXPositionAttribute as CFString, originValue)
-                AXUIElementSetAttributeValue(
-                    element, kAXSizeAttribute as CFString, sizeValue)
+        DispatchQueue.global().async {
+            op.imagesForWindows(paramWindows, requestedSize: requestedSize) { images in
+                let results = paramWindows.enumerated().compactMap { (index, window) -> (UkamWindowLike.ID, NSImage)? in
+                    guard let image = images[index] else { return nil }
+                    return (window.id, image)
+                }
+                DispatchQueue.main.async {
+                    completionHandler(results)
+                }
             }
         }
     }
-    
-    private func activateWindowApp(_ window: CGWindow) {
-        guard let pid = window.ownerPID,
-              let runningApp = NSRunningApplication(processIdentifier: pid_t(pid))
-        else { return }
-        runningApp.activate(options: [.activateAllWindows])
-    }
-}
-
-private func aspectFitSize(originalSize: CGSize, drawableSize: CGSize) -> CGSize {
-    let originalAspectRatio = originalSize.width / originalSize.height
-    let drawableAspectRatio = drawableSize.width / drawableSize.height
-    
-    var scaledSize: CGSize
-    
-    if originalAspectRatio > drawableAspectRatio {
-        // Width is the limiting factor
-        scaledSize = CGSize(width: drawableSize.width, height: drawableSize.width / originalAspectRatio)
-    } else {
-        // Height is the limiting factor
-        scaledSize = CGSize(width: drawableSize.height * originalAspectRatio, height: drawableSize.height)
-    }
-    
-    return scaledSize
 }

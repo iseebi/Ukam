@@ -23,7 +23,7 @@ struct CGWindow: CGWindowLike, CustomStringConvertible {
     let rawData: [String: AnyObject]
     
     var id: Int { number ?? 0 }
-    var isVisible: Bool { isOnScreen && windowLayer == 0 && alpha > 0 }
+    var isVisible: Bool { windowLayer == 0 && alpha > 0 }
     
     var name: String? { rawData[kCGWindowName as String] as? String }
     var number: Int? { rawData[kCGWindowNumber as String] as? Int }

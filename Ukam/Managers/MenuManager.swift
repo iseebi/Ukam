@@ -99,7 +99,7 @@ class MenuManager: NSObject {
 }
 
 extension MenuManager: WindowsViewControllerDelegate {
-    func windowsViewController(_ viewController: WindowsViewController, didSelectWindow window: CGWindowLike) {
+    func windowsViewController(_ viewController: WindowsViewController, didSelectWindow window: UkamWindowLike) {
         popover.close()
     }
 }
