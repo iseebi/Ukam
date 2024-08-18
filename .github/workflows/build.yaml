@@ -49,10 +49,6 @@ jobs:
           echo '${{ secrets.ASC_KEY }}' > ~/private_keys/AuthKey_${{ secrets.ASC_KEY_ID }}.p8
           echo -n '${{ secrets.APPCAST_SIGN_KEY }}' > ~/private_keys/appcast_sign_key
 
-      - name: configure exportOptions.plist
-        run: |
-          /usr/libexec/PlistBuddy -c "Set :teamID ${{ secrets.MAC_TEAM_ID }}" exportOptions.plist
-
       - name: build macOS App
         run: |
           export MARKETING_VERSION=${MARKETING_VERSION_V#v}
