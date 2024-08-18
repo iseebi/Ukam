@@ -104,7 +104,7 @@ jobs:
       - name: Create release
         if: ${{ startsWith(github.ref, 'refs/tags/v') }}
         run: |
-          gh release create --draft --generate-notes ${{ github.ref_name }} build/Ukam.zip build/Ukam.dmg
+          gh release create --draft --generate-notes ${{ github.ref_name }} build/Ukam.zip build/Ukam.dmg build/appcast.xml
         env:
           GH_TOKEN: ${{ github.token }}
 
