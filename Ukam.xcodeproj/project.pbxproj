@@ -33,6 +33,8 @@
 		82479F802C709DE90063996B /* UkamWindowModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82479F7F2C709DE90063996B /* UkamWindowModels.swift */; };
 		82479F852C71AE750063996B /* SkyLightOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82479F842C71AE750063996B /* SkyLightOperations.swift */; };
 		82479F872C71B0210063996B /* CGWindowOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82479F862C71B0210063996B /* CGWindowOperations.swift */; };
+		82479FA42C71D3F60063996B /* ConfigurationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82479FA32C71D3F60063996B /* ConfigurationsManager.swift */; };
+		82479FA62C71D4AE0063996B /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82479FA52C71D4AE0063996B /* ServiceManagement.framework */; };
 		826008282C67511200ACD8A7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826008272C67511200ACD8A7 /* AboutViewController.swift */; };
 		8260082A2C67511A00ACD8A7 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826008292C67511A00ACD8A7 /* AboutView.swift */; };
 		8260082D2C6755A500ACD8A7 /* AcknowledgementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8260082C2C6755A500ACD8A7 /* AcknowledgementsView.swift */; };
@@ -66,6 +68,8 @@
 		82479F7F2C709DE90063996B /* UkamWindowModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UkamWindowModels.swift; sourceTree = "<group>"; };
 		82479F842C71AE750063996B /* SkyLightOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyLightOperations.swift; sourceTree = "<group>"; };
 		82479F862C71B0210063996B /* CGWindowOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGWindowOperations.swift; sourceTree = "<group>"; };
+		82479FA32C71D3F60063996B /* ConfigurationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationsManager.swift; sourceTree = "<group>"; };
+		82479FA52C71D4AE0063996B /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		8260081F2C67497900ACD8A7 /* Ukam.Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Ukam.Release.xcconfig; sourceTree = "<group>"; };
 		826008202C67499A00ACD8A7 /* Ukam.Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Ukam.Debug.xcconfig; sourceTree = "<group>"; };
 		826008212C674A0800ACD8A7 /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				822CDF4D27D5181D00C6B331 /* CoreGraphics.framework in Frameworks */,
+				82479FA62C71D4AE0063996B /* ServiceManagement.framework in Frameworks */,
 				82302D1D2C66A52C00B8BF8C /* RswiftLibrary in Frameworks */,
 				822CDF5027D52C1C00C6B331 /* ApplicationServices.framework in Frameworks */,
 			);
@@ -120,6 +125,7 @@
 				82479F772C7097180063996B /* Window */,
 				822CDF3D27D4C6CD00C6B331 /* MenuManager.swift */,
 				828688F42C6512A80059CAEE /* PermissionsManager.swift */,
+				82479FA32C71D3F60063996B /* ConfigurationsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -137,6 +143,7 @@
 		822CDF4B27D5181D00C6B331 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				82479FA52C71D4AE0063996B /* ServiceManagement.framework */,
 				82B14E0B2C5D11B4000B08C3 /* ScreenCaptureKit.framework */,
 				822CDF4F27D52C1C00C6B331 /* ApplicationServices.framework */,
 				822CDF4C27D5181D00C6B331 /* CoreGraphics.framework */,
@@ -388,6 +395,7 @@
 			files = (
 				82479F7D2C709A100063996B /* SkyLightModels.swift in Sources */,
 				828688F52C6512A80059CAEE /* PermissionsManager.swift in Sources */,
+				82479FA42C71D3F60063996B /* ConfigurationsManager.swift in Sources */,
 				822CDF3E27D4C6CD00C6B331 /* MenuManager.swift in Sources */,
 				8260083E2C675CA600ACD8A7 /* AcknowledgementsDataSource.swift in Sources */,
 				82B14E022C5CDC0E000B08C3 /* WindowsView.swift in Sources */,

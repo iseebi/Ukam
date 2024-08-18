@@ -12,12 +12,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var menuManager: MenuManager!
     var windowManager: WindowManager!
     var permissionsManager: PermissionsManager!
+    var configurationsManager: ConfigurationsManager!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         permissionsManager = PermissionsManager()
         windowManager = WindowManager()
-        menuManager = MenuManager(windowManager: windowManager, permissionsManager: permissionsManager)
+        configurationsManager = ConfigurationsManager()
+        menuManager = MenuManager(
+            windowManager: windowManager,
+            permissionsManager: permissionsManager,
+            configurationsManager: configurationsManager)
         
         if !permissionsManager.isPermitted {
             permissionsManager.showPermissionsWindow()
