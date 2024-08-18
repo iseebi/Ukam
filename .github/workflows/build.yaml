@@ -68,10 +68,10 @@ jobs:
           xcodebuild -exportArchive -archivePath build/Ukam.xcarchive -exportPath build/ -exportOptionsPlist exportOptions.plist
           
           cd build/
-          zip -r Ukam.zip Ukam.app
-          zip -r Ukam.xcarchive.zip Ukam.xcarchive
+          /usr/bin/ditto -c -k --sequesterRsrc --keepParent Ukam.app Ukam.zip
+          /usr/bin/ditto -c -k --sequesterRsrc --keepParent Ukam.xcarchive Ukam.xcarchive.zip 
           mkdir dmgBase
-          cp -r Ukam.app dmgBase/
+          cp -Rp Ukam.app dmgBase/
           hdiutil create -volname Ukam -srcfolder dmgBase -ov -format UDZO Ukam.dmg
         env:
           DEVELOPER_DIR: /Applications/Xcode_15.3.app/Contents/Developer
