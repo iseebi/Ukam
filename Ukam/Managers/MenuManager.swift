@@ -11,9 +11,12 @@ class MenuManager: NSObject {
     let windowsViewController: WindowsViewController
     let windowManager: WindowManager
     let permissionsManager: PermissionsManager
+    let configurationsManager: ConfigurationsManager
     
     let statusBarMenu = NSMenu(title: "Status Menu")
     let statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+    
+    var launchAtLoginMenuItem: NSMenuItem!
     
     lazy var popover: NSPopover = {
         let popover = NSPopover()
@@ -24,9 +27,10 @@ class MenuManager: NSObject {
     
     private var aboutWindow: NSWindow?
 
-    init(windowManager: WindowManager, permissionsManager: PermissionsManager) {
+    init(windowManager: WindowManager, permissionsManager: PermissionsManager, configurationsManager: ConfigurationsManager) {
         self.windowManager = windowManager
         self.permissionsManager = permissionsManager
+        self.configurationsManager = configurationsManager
         windowsViewController = WindowsViewController(windowManager: windowManager)
         
         super.init()
@@ -41,15 +45,28 @@ class MenuManager: NSObject {
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         
+        let settingMenu = NSMenu()
+        launchAtLoginMenuItem = settingMenu.addItem(
+            withTitle: R.string.localizable.status_menu_launch_at_login(),
+            action: #selector(MenuManager.updateLaunchAtLogin),
+            keyEquivalent: "")
+        launchAtLoginMenuItem.target = self
+        
         statusBarMenu.autoenablesItems = true
         statusBarMenu.addItem(
             withTitle: R.string.localizable.status_menu_about(),
             action: #selector(MenuManager.showAbout),
             keyEquivalent: "").target = self
+        let settingMenuItem = statusBarMenu.addItem(
+            withTitle: R.string.localizable.status_menu_settings(),
+            action: nil,
+            keyEquivalent: "")
+        settingMenuItem.submenu = settingMenu
         statusBarMenu.addItem(
             withTitle: R.string.localizable.status_menu_exit(),
             action: #selector(MenuManager.exitApp),
             keyEquivalent: "").target = self
+        statusBarMenu.delegate = self
         
         windowsViewController.delegate = self
     }
@@ -77,6 +94,10 @@ class MenuManager: NSObject {
         }
     }
     
+    @objc func updateLaunchAtLogin() {
+        try? configurationsManager.setLaunchAtLogin(!configurationsManager.launchAtLogin)
+    }
+    
     func processPrimaryAction() {
         guard let button = statusBarItem.button else { return }
         
@@ -101,6 +122,12 @@ class MenuManager: NSObject {
 extension MenuManager: WindowsViewControllerDelegate {
     func windowsViewController(_ viewController: WindowsViewController, didSelectWindow window: UkamWindowLike) {
         popover.close()
+    }
+}
+
+extension MenuManager: NSMenuDelegate {
+    func menuWillOpen(_ menu: NSMenu) {
+        launchAtLoginMenuItem.state = configurationsManager.launchAtLogin ? .on : .off
     }
 }
 

@@ -21,5 +21,6 @@ class ConfigurationsManager {
         } else {
             try SMAppService.mainApp.unregister()
         }
+        launchAtLogin = enabled
     }
 }
