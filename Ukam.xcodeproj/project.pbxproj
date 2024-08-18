@@ -45,7 +45,6 @@
 		82B14E042C5CE172000B08C3 /* WindowsViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B14E032C5CE172000B08C3 /* WindowsViewDataSource.swift */; };
 		82B14E062C5CED30000B08C3 /* WindowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B14E052C5CED30000B08C3 /* WindowItemView.swift */; };
 		82B14E082C5CF685000B08C3 /* LayoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B14E072C5CF685000B08C3 /* LayoutConstants.swift */; };
-		82B14E0C2C5D11B4000B08C3 /* ScreenCaptureKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82B14E0B2C5D11B4000B08C3 /* ScreenCaptureKit.framework */; };
 		82C57EFD27D46DB900395627 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C57EFC27D46DB900395627 /* AppDelegate.swift */; };
 		82C57F0127D46DC100395627 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82C57F0027D46DC100395627 /* Assets.xcassets */; };
 		82C57F0427D46DC100395627 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82C57F0227D46DC100395627 /* Main.storyboard */; };
@@ -98,7 +97,6 @@
 			files = (
 				822CDF4D27D5181D00C6B331 /* CoreGraphics.framework in Frameworks */,
 				82302D1D2C66A52C00B8BF8C /* RswiftLibrary in Frameworks */,
-				82B14E0C2C5D11B4000B08C3 /* ScreenCaptureKit.framework in Frameworks */,
 				822CDF5027D52C1C00C6B331 /* ApplicationServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,7 +257,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				826008372C675AAB00ACD8A7 /* PBXTargetDependency */,
 				82302D1F2C66A54300B8BF8C /* PBXTargetDependency */,
 			);
 			name = Ukam;
@@ -418,10 +415,6 @@
 		82302D1F2C66A54300B8BF8C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 82302D1E2C66A54300B8BF8C /* RswiftGenerateInternalResources */;
-		};
-		826008372C675AAB00ACD8A7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 826008362C675AAB00ACD8A7 /* LicensePlistBuildTool */;
 		};
 /* End PBXTargetDependency section */
 
@@ -697,11 +690,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 82302D1B2C66A4F900B8BF8C /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = "plugin:RswiftGenerateInternalResources";
-		};
-		826008362C675AAB00ACD8A7 /* LicensePlistBuildTool */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 826008342C675A9700ACD8A7 /* XCRemoteSwiftPackageReference "LicensePlist" */;
-			productName = "plugin:LicensePlistBuildTool";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

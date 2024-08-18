@@ -6,7 +6,9 @@
 //
 
 import Cocoa
+#if canImport(ScrrenCaptureKit)
 import ScreenCaptureKit
+#endif
 
 fileprivate func lookupWindowID(_ uiElement: AXUIElement) -> CGWindowID? {
     var windowId: CGWindowID = 0
@@ -97,6 +99,7 @@ class CGWindowOperations {
         let group = DispatchGroup()
         let queue = DispatchQueue(label: "com.ukam.screenshot.cgimage")
         
+#if canImport(ScrrenCaptureKit)
         for (index, window) in windows.enumerated() {
             group.enter()
             self.imageForWindow(window, requestedSize: requestedSize) { image in
@@ -110,8 +113,12 @@ class CGWindowOperations {
         group.notify(queue: .main) {
             contentHandler(results)
         }
+#else
+        contentHandler(results)
+#endif
     }
     
+#if canImport(ScrrenCaptureKit)
     fileprivate func imageForWindow(_ window: CGWindow, requestedSize: CGSize, contentHandler: @escaping (NSImage?) -> Void) {
         SCShareableContent.getWithCompletionHandler { shareableContent, error in
             if let error = error {
@@ -154,4 +161,5 @@ class CGWindowOperations {
             }
         }
     }
+#endif
 }
