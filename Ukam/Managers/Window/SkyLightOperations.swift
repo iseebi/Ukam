@@ -118,6 +118,11 @@ class SkyLightOperations {
             return NSImage(cgImage: image, size: NSSize(width: image.width, height: image.height))
         })
     }
+    
+    func moveWindowToCurrentSpace(_ window: SLSWindow) {
+        guard let currentSpace = enumerateMonitors().first?.currentSpace else { return }
+        moveWindow(window, to: currentSpace)
+    }
 
     func moveWindow(_ window: SLSWindow, to space: SLSSpace) {
         if ProcessInfo.processInfo.isSonoma145 {

@@ -43,8 +43,19 @@ class WindowManager {
     }
     
     func activate(_ window: UkamWindow){
-        guard let cgWindow = window.cgWindow as? CGWindow else { return }
+        guard  let slsWindow = window.skyLightWindow as? SLSWindow,
+               let cgWindow = window.cgWindow as? CGWindow
+        else { return }
+        
+        // 他のデスクトップにいるウィンドウの場合は、現在のディスプレイスペースに移動させる
+        if !cgWindow.isOnScreen {
+            skyLightOperations.moveWindowToCurrentSpace(slsWindow)
+        }
+        
+        // 指定されたウィンドウが現在のスクリーンの範囲内にいない場合は、移動させる
         cgWindowOperations.moveWindowIfNeeded(cgWindow)
+        
+        // ウィンドウをアクティブにする
         cgWindowOperations.activate(cgWindow)
     }
     
