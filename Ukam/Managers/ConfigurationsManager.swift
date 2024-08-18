@@ -7,12 +7,29 @@
 
 import Cocoa
 import ServiceManagement
+import Sparkle
 
-class ConfigurationsManager {
-    private(set) var launchAtLogin: Bool
+class ConfigurationsManager: NSObject {
+    let updaterController: SPUStandardUpdaterController
     
-    init() {
+    private(set) var launchAtLogin: Bool
+    var checkForUpdatesOnLaunch: Bool {
+        get {
+            updaterController.updater.automaticallyChecksForUpdates
+        }
+        set {
+            updaterController.updater.automaticallyChecksForUpdates = newValue
+        }
+    }
+    
+    override init() {
+        updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
         launchAtLogin = SMAppService.mainApp.status == .enabled
+        super.init()
+    }
+    
+    func checkForUpdates() {
+        updaterController.checkForUpdates(self)
     }
     
     func setLaunchAtLogin(_ enabled: Bool) throws {

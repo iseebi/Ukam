@@ -35,6 +35,7 @@
 		82479F872C71B0210063996B /* CGWindowOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82479F862C71B0210063996B /* CGWindowOperations.swift */; };
 		82479FA42C71D3F60063996B /* ConfigurationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82479FA32C71D3F60063996B /* ConfigurationsManager.swift */; };
 		82479FA62C71D4AE0063996B /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82479FA52C71D4AE0063996B /* ServiceManagement.framework */; };
+		82479FAA2C71D9520063996B /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 82479FA92C71D9520063996B /* Sparkle */; };
 		826008282C67511200ACD8A7 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826008272C67511200ACD8A7 /* AboutViewController.swift */; };
 		8260082A2C67511A00ACD8A7 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826008292C67511A00ACD8A7 /* AboutView.swift */; };
 		8260082D2C6755A500ACD8A7 /* AcknowledgementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8260082C2C6755A500ACD8A7 /* AcknowledgementsView.swift */; };
@@ -99,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82479FAA2C71D9520063996B /* Sparkle in Frameworks */,
 				822CDF4D27D5181D00C6B331 /* CoreGraphics.framework in Frameworks */,
 				82479FA62C71D4AE0063996B /* ServiceManagement.framework in Frameworks */,
 				82302D1D2C66A52C00B8BF8C /* RswiftLibrary in Frameworks */,
@@ -269,6 +271,7 @@
 			name = Ukam;
 			packageProductDependencies = (
 				82302D1C2C66A52C00B8BF8C /* RswiftLibrary */,
+				82479FA92C71D9520063996B /* Sparkle */,
 			);
 			productName = Ukam;
 			productReference = 82C57EF927D46DB900395627 /* Ukam.app */;
@@ -306,6 +309,7 @@
 			packageReferences = (
 				82302D1B2C66A4F900B8BF8C /* XCRemoteSwiftPackageReference "R.swift" */,
 				826008342C675A9700ACD8A7 /* XCRemoteSwiftPackageReference "LicensePlist" */,
+				82479FA82C71D9520063996B /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = 82C57EFA27D46DB900395627 /* Products */;
 			projectDirPath = "";
@@ -678,6 +682,14 @@
 				minimumVersion = 7.5.0;
 			};
 		};
+		82479FA82C71D9520063996B /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.4;
+			};
+		};
 		826008342C675A9700ACD8A7 /* XCRemoteSwiftPackageReference "LicensePlist" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mono0926/LicensePlist.git";
@@ -698,6 +710,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 82302D1B2C66A4F900B8BF8C /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = "plugin:RswiftGenerateInternalResources";
+		};
+		82479FA92C71D9520063996B /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82479FA82C71D9520063996B /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
