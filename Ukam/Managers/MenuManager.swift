@@ -17,6 +17,7 @@ class MenuManager: NSObject {
     let statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     
     var launchAtLoginMenuItem: NSMenuItem!
+    var enableAutomaticallyUpdateCheckMenuItem: NSMenuItem!
     
     lazy var popover: NSPopover = {
         let popover = NSPopover()
@@ -51,17 +52,25 @@ class MenuManager: NSObject {
             action: #selector(MenuManager.updateLaunchAtLogin),
             keyEquivalent: "")
         launchAtLoginMenuItem.target = self
+        enableAutomaticallyUpdateCheckMenuItem = settingMenu.addItem(
+            withTitle: R.string.localizable.status_menu_automatically_check_for_updates(),
+            action: #selector(MenuManager.updateAutomaticallyCheckForUpdates),
+            keyEquivalent: "")
+        enableAutomaticallyUpdateCheckMenuItem.target = self
         
         statusBarMenu.autoenablesItems = true
         statusBarMenu.addItem(
             withTitle: R.string.localizable.status_menu_about(),
             action: #selector(MenuManager.showAbout),
             keyEquivalent: "").target = self
-        let settingMenuItem = statusBarMenu.addItem(
+        statusBarMenu.addItem(
             withTitle: R.string.localizable.status_menu_settings(),
             action: nil,
-            keyEquivalent: "")
-        settingMenuItem.submenu = settingMenu
+            keyEquivalent: "").submenu = settingMenu
+        statusBarMenu.addItem(
+            withTitle: R.string.localizable.status_menu_check_for_updates(),
+            action: #selector(MenuManager.checkForUpdates),
+            keyEquivalent: "").target = self
         statusBarMenu.addItem(
             withTitle: R.string.localizable.status_menu_exit(),
             action: #selector(MenuManager.exitApp),
@@ -98,6 +107,14 @@ class MenuManager: NSObject {
         try? configurationsManager.setLaunchAtLogin(!configurationsManager.launchAtLogin)
     }
     
+    @objc func updateAutomaticallyCheckForUpdates() {
+        configurationsManager.checkForUpdatesOnLaunch = !configurationsManager.checkForUpdatesOnLaunch
+    }
+    
+    @objc func checkForUpdates() {
+        configurationsManager.checkForUpdates()
+    }
+    
     func processPrimaryAction() {
         guard let button = statusBarItem.button else { return }
         
@@ -128,6 +145,7 @@ extension MenuManager: WindowsViewControllerDelegate {
 extension MenuManager: NSMenuDelegate {
     func menuWillOpen(_ menu: NSMenu) {
         launchAtLoginMenuItem.state = configurationsManager.launchAtLogin ? .on : .off
+        enableAutomaticallyUpdateCheckMenuItem.state = configurationsManager.checkForUpdatesOnLaunch ? .on : .off
     }
 }
 

@@ -34,5 +34,7 @@
 	<false/>
     <key>SUPublicEDKey</key>
     <string>i8pur3Z+VEbhk/kPr7F9hiLFkG1Qe4B+y8/HaL4vyA8=</string>
+    <key>SUFeedURL</key>
+    <string>https://updates.iseteki.net/ukam/appcast.xml</string>
 </dict>
 </plist>
