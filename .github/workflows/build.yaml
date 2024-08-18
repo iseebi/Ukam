@@ -49,10 +49,6 @@ jobs:
           echo '${{ secrets.ASC_KEY }}' > ~/private_keys/AuthKey_${{ secrets.ASC_KEY_ID }}.p8
           echo -n '${{ secrets.APPCAST_SIGN_KEY }}' > ~/private_keys/appcast_sign_key
 
-      - name: configure exportOptions.plist
-        run: |
-          /usr/libexec/PlistBuddy -c "Set :teamID ${{ secrets.MAC_TEAM_ID }}" exportOptions.plist
-
       - name: build macOS App
         run: |
           export MARKETING_VERSION=${MARKETING_VERSION_V#v}
@@ -68,10 +64,10 @@ jobs:
           xcodebuild -exportArchive -archivePath build/Ukam.xcarchive -exportPath build/ -exportOptionsPlist exportOptions.plist
           
           cd build/
-          zip -r Ukam.zip Ukam.app
-          zip -r Ukam.xcarchive.zip Ukam.xcarchive
+          /usr/bin/ditto -c -k --sequesterRsrc --keepParent Ukam.app Ukam.zip
+          /usr/bin/ditto -c -k --sequesterRsrc --keepParent Ukam.xcarchive Ukam.xcarchive.zip 
           mkdir dmgBase
-          cp -r Ukam.app dmgBase/
+          cp -Rp Ukam.app dmgBase/
           hdiutil create -volname Ukam -srcfolder dmgBase -ov -format UDZO Ukam.dmg
         env:
           DEVELOPER_DIR: /Applications/Xcode_15.3.app/Contents/Developer
