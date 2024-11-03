@@ -72,6 +72,9 @@ class CGWindowOperations {
             newRect.size.height = screen.visibleFrame.height
         }
         
+        // https://github.com/tmandry/Swindler/issues/62#issuecomment-504728269
+        newRect.origin.y = NSMaxY(NSScreen.screens[0].frame) - NSMaxY(screen.frame)
+        
         // 上下左右中央にする
         newRect.origin.x += (screen.visibleFrame.width - newRect.width) / 2
         newRect.origin.y += (screen.visibleFrame.height - newRect.height) / 2
